@@ -792,6 +792,28 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
+"@public-assembly/assemble-curation-functions@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-functions/-/assemble-curation-functions-0.0.8.tgz#70b52cb80cf94c7683c0b7a832cc37263d21788e"
+  integrity sha512-EN/rZMttJcnZ12FneVFCrQTPIEG0aX+kmFOcJi+6UmENZXAcMEIOtBbCXgUsLe43mdCiG0P6cCXEYyswLL5ryQ==
+
+"@public-assembly/audio-player-ui@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.6.tgz#e708ca254120f79ba98ed2a5df187217de491db4"
+  integrity sha512-1HdnQ9qZZsS74Pf5gvrLZXSaBTG/PaFXZesJUXL0Eatw0YfxbhAl9aqqhAPW9BH9u4pG9HRUegIu5Kg3Z2Ss7g==
+
+"@public-assembly/erc721-drops-minter@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.2.tgz#2a4185ea76f7f6d0ed72d01291856d1a818d15d0"
+  integrity sha512-X/dsoQ7ml8qPoEWdHJIerd1QfTDpsnwLtDfBMtFhxviDPfckicKJTKnbFHntCdyHN0mqDdfvqVIx4kBZhPi2gg==
+  dependencies:
+    "@public-assembly/zora-drops-utils" "^0.0.9"
+
+"@public-assembly/zora-drops-utils@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.9.tgz#80bf536104ed2219139b4040a6a7afdd1634aa2b"
+  integrity sha512-QMxDy5xDA5wccTyqYONhyz3SfxIoLTjXeMieLTkH9Z5O0tB2KaSZRxIWCKjAAbEaFosa1nGr0wQHva3HcWVSCQ==
+
 "@rainbow-me/rainbowkit@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-0.5.0.tgz#6fcb2ec343e789ba1fa260d8bfa36abab2b79a48"
