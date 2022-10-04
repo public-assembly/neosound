@@ -14,7 +14,7 @@ export function useAuth() {
   const provider = useProvider()
 
   const { data: signer } = useSigner()
-  const { address, isConnecting } = useAccount()
+  const { address, isConnecting, isConnected } = useAccount()
   const { data: ensName } = useEnsName({
     address: address,
   })
@@ -29,6 +29,7 @@ export function useAuth() {
     provider,
     signer,
     address: address,
+    isConnected,
     ensName: ensName || shortenAddress(address),
     ensAvatar: ensAvatar,
     displayName: ensName || shortenAddress(address),
