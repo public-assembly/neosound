@@ -3,9 +3,13 @@ import { getDefaultWallets, RainbowKitProvider, lightTheme } from '@rainbow-me/r
 import { createClient, chain, configureChains, WagmiConfig } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { SWRConfig } from 'swr'
-import '@rainbow-me/rainbowkit/styles.css';
+import '@rainbow-me/rainbowkit/styles.css'
+import { ModalProvider } from '@/context/ModalProvider'
 
-const { chains, provider } = configureChains([chain.mainnet, chain.goerli], [publicProvider()])
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.goerli],
+  [publicProvider()]
+)
 const { connectors } = getDefaultWallets({
   appName: 'NeoSound',
   chains,
@@ -39,7 +43,9 @@ export function AppWrapper({ children }: { children: JSX.Element }) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          {children}
+          <ModalProvider>
+            {children}
+          </ModalProvider>
         </SWRConfig>
       </RainbowKitProvider>
     </WagmiConfig>

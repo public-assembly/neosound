@@ -1,0 +1,24 @@
+.neosound--backdrop {
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 48%, rgba(255,137,222,1) 100%); 
+}
+
+.neosound__playlist--wrapper {
+  @apply grid grid-cols-1
+}
+
+.neosound__playlist--grid-view {
+  @apply gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+}
+
+.neosound__playlist--item {
+  @apply relative
+}
+
+.neosound__playlist--grid-item {
+  @apply aspect-square w-full
+}
+
+.neosound__playlist--row-item {
+  @apply text-neutral-300 gap-4 mb-4 flex flex-row items-center justify-start border border-neutral-600 backdrop-blur-[50px] shadow-lg shadow-neutral-700/10
+}

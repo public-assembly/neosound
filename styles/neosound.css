@@ -1,0 +1,79 @@
+:root {
+  /* NAV DESKTOP */
+  --ns__link-default: #aab4b1;
+  --ns__link-current: #ecf1f0;
+  --ns__link-hover: #ecf1f0;
+  /* NAV MOBILE */
+  --ns__mobile-bg: #ff89de;
+  --ns__mobile-link-current: rgb(248, 248, 248);
+  --ns__mobile-link: rgb(42, 39, 39);
+  /* HEADINGS */
+  --ns__text-dark: #050a09;
+  --ns__text-light: #ecf1f0;
+  /* SURFACES */
+  --ns__surface-dark: #050a09;
+  --ns__surface-pink: #ff89de;
+}
+
+/* NAV DESKTOP */
+.ns-nav__item {
+  color: var(--ns__link-default);
+  font-size: '20px';
+  line-height: '28px';
+  letter-spacing: '2%';
+  font-weight: 600;
+}
+.ns-nav__item:hover {
+  color: var(--ns__link-hover);
+  font-weight: 600;
+}
+.ns-nav__item_current {
+  color: var(--ns__link-current);
+  font-weight: bold;
+}
+/* NAV MOBILE */
+.ns-mobile__menu {
+  background-color: var(--ns__mobile-bg);
+  opacity: 0.9;
+}
+.ns-nav__mobile_item_current {
+  color: var(--ns__mobile-link-current);
+}
+.ns-nav__mobile_item {
+  color: var(--ns__mobile-link);
+}
+/* HEADINGS */
+.ns-headerLarge {
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0%;
+  font-weight: 600;
+  color: var(--ns__text-dark);
+}
+
+.ns-labelSmall {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  font-weight: semibold;
+  color: var(--ns__text-dark);
+}
+.ns-buttonLarge {
+  width: 100%;
+  padding: 16px 0;
+  font-size: 18px;
+  text-align: center;
+  background-color: var(--ns__surface-dark);
+  color: var(--ns__text-light);
+}
+.ns-surfacePrimary {
+  background-color: var(--ns__surface-pink);
+}
+.ns-connectButton {
+  color: var(--ns__text-light);
+  padding: 4px 8px;
+  border: 1px solid var(--ns__text-light);
+}
+.ns-textLight {
+  color: var(--ns__text-light);
+}

@@ -1,10 +1,11 @@
-import { ConnectButton } from './ConnectButton'
+import { DisconnectButton } from './auth'
+import { Nav } from './Nav'
 
 export function Header() {
   return (
-    <header className="flex flex-row justify-between items-center w-full px-8">
-      <span className="text-2xl">Header</span>
-      <ConnectButton />
+    <header className="flex w-full flex-row items-center justify-between px-8 sticky top-0">
+      <Nav />
+      <DisconnectButton />
     </header>
   )
 }
