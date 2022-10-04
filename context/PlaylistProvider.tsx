@@ -1,22 +1,20 @@
 import { ReactNode, useState, useCallback } from 'react'
 import { createContext, useContext } from 'react'
-import { useContractRead } from 'wagmi'
-import Contract from './../abi/CurationManager.json'
 import { useCurationFunctions } from '@public-assembly/assemble-curation-functions'
 import { useMemo } from 'react'
 
 export type PlaylistProps = {
   children?: ReactNode
   curationContractAddress?: string
-  chainId?: string
+  networkId?: '1' | '5'
 }
 
 export type PlaylistReturnTypes = {
   toggleLayout?: () => void
   gridLayout?: boolean
-  playList?: any
   curationPlaylist?: any
-  chainId?: string
+  playListContracts?: string[]
+  networkId?: '1' | '5'
 }
 
 const PlaylistContext = createContext<PlaylistReturnTypes>({
@@ -28,19 +26,13 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
-export function PlaylistProvider({ children, curationContractAddress, chainId }: PlaylistProps) {
+export function PlaylistProvider({ children, curationContractAddress, networkId }: PlaylistProps) {
   const [gridLayout, setGridLayout] = useState(false)
 
   const toggleLayout = useCallback(() => {
     console.log('gird', gridLayout)
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
-
-  const { data } = useContractRead({
-    addressOrName: "0x6422Bf82Ab27F121a043d6DE88b55FA39e2ea292", 
-    contractInterface: Contract.abi,
-    functionName: 'viewAllListings',
-  })
 
   const { 
     getListingsRead: playlistData,
@@ -83,14 +75,23 @@ export function PlaylistProvider({ children, curationContractAddress, chainId }:
     }
   }, [playlistData])
 
+  const playListContracts = useMemo(() => {
+    if (santizedPlaylist.length) {
+      const contracts = santizedPlaylist.map((item: any) => item?.curatedContract)
+      return contracts
+    } else {
+      return []
+    }
+  }, [santizedPlaylist])
+
   return (
     <PlaylistContext.Provider
       value={{
         toggleLayout,
         gridLayout,
-        playList: data && data.length ? data : [],
         curationPlaylist: santizedPlaylist,
-        chainId: chainId || '1',
+        playListContracts,
+        networkId: networkId || '1',
       }}>
       {children}
     </PlaylistContext.Provider>

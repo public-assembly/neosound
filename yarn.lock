@@ -923,10 +923,10 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-functions/-/assemble-curation-functions-0.0.8.tgz#70b52cb80cf94c7683c0b7a832cc37263d21788e"
   integrity sha512-EN/rZMttJcnZ12FneVFCrQTPIEG0aX+kmFOcJi+6UmENZXAcMEIOtBbCXgUsLe43mdCiG0P6cCXEYyswLL5ryQ==
 
-"@public-assembly/audio-player-ui@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.6.tgz#e708ca254120f79ba98ed2a5df187217de491db4"
-  integrity sha512-1HdnQ9qZZsS74Pf5gvrLZXSaBTG/PaFXZesJUXL0Eatw0YfxbhAl9aqqhAPW9BH9u4pG9HRUegIu5Kg3Z2Ss7g==
+"@public-assembly/audio-player-ui@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.7.tgz#4da8dc392ab2c80aa4f9c007bb308457ad841107"
+  integrity sha512-TIEcj0DuQ8H+/or7/FzaJjl0OGGza9+yAPJcbWzO2jwPihXF3j5VC5ZnYsBvIQJMP1x79o2mcBqN7rtZK2vBnQ==
 
 "@public-assembly/erc721-drops-minter@^0.0.4":
   version "0.0.4"

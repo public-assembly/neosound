@@ -15,7 +15,7 @@
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/inter": "^4.5.12",
     "@public-assembly/assemble-curation-functions": "^0.0.8",
-    "@public-assembly/audio-player-ui": "^0.0.6",
+    "@public-assembly/audio-player-ui": "^0.0.7",
     "@public-assembly/erc721-drops-minter": "^0.0.4",
     "@public-assembly/zora-drops-utils": "^0.1.0",
     "@radix-ui/react-dialog": "^1.0.0",
