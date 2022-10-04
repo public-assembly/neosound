@@ -1,4 +1,4 @@
 export * from './AppWrapper'
-export * from './PageWrapper'
-export * from './Playlist'
+export * from './Header'
 export * from './Backdrop'
+export * from './Playlist'

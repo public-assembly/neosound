@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { usePlaylistProvider } from '@/context/PlaylistContext'
+import { usePlaylistProvider } from '@/context/PlaylistProvider'
 import { useState } from 'react'
 
 export const GridToggle = () => {

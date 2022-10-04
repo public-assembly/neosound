@@ -1,1 +1,1 @@
-export * from './PlaylistContext'
+export * from './PlaylistProvider'

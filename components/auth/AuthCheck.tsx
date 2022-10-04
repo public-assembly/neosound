@@ -4,14 +4,10 @@ import { Connect } from './Connect'
 export function AuthCheck({ formUI }: { formUI?: JSX.Element }) {
   const { isConnected } = useAuth()
   return (
-    <div className={`ns-surfacePrimary p-4`}>
+    <div className={`ns-surfacePrimary`}>
       {!isConnected ? (
-        <div>
-          <Connect />
-        </div>
-      ) : (
-        <div>{formUI}</div>
-      )}
+        <Connect />
+      ) : formUI}
     </div>
   )
 }
