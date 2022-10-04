@@ -2,15 +2,21 @@ import { ReactNode, useState, useCallback } from 'react'
 import { createContext, useContext } from 'react'
 import { useContractRead } from 'wagmi'
 import Contract from './../abi/CurationManager.json'
+import { useCurationFunctions } from '@public-assembly/assemble-curation-functions'
+import { useEffect } from 'react'
 
 export type PlaylistProps = {
   children?: ReactNode
+  curationContractAddress?: string
+  chainId?: string
 }
 
 export type PlaylistReturnTypes = {
   toggleLayout?: () => void
   gridLayout?: boolean
-  playList?: any[]
+  playList?: any
+  curationPlaylist?: any
+  chainId?: string
 }
 
 const PlaylistContext = createContext<PlaylistReturnTypes>({
@@ -22,7 +28,7 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
-export function PlaylistProvider({ children }: PlaylistProps) {
+export function PlaylistProvider({ children, curationContractAddress, chainId }: PlaylistProps) {
   const [gridLayout, setGridLayout] = useState(false)
 
   const toggleLayout = useCallback(() => {
@@ -36,13 +42,27 @@ export function PlaylistProvider({ children }: PlaylistProps) {
     functionName: 'viewAllListings',
   })
 
+  const { 
+    getListingsRead: playlistData, 
+    // getListingsError,
+    // getListingsLoading,
+  } = useCurationFunctions({
+    curationContractAddress
+  })
+
+  useEffect(() => {
+    console.log(chainId)
+    console.log(playlistData)
+  }, [playlistData])
+
   return (
     <PlaylistContext.Provider
       value={{
         toggleLayout,
         gridLayout,
-        /* @ts-ignore */
-        playList: data && data.length ? data : []
+        playList: data && data.length ? data : [],
+        curationPlaylist: playlistData && playlistData.length ? playlistData : [],
+        chainId: chainId || '1',
       }}>
       {children}
     </PlaylistContext.Provider>
