@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { DropsComponents } from '@public-assembly/erc721-drops-minter'
-import { useDropsContractProvider } from "@public-assembly/zora-drops-utils";
+import { useDropsContractProvider } from "@public-assembly/zora-drops-utils"
 import { usePlaylistProvider } from '@/context/PlaylistProvider'
 import { useHover } from '@/hooks/useHover'
 import { Modal } from '../modal/Modal'
