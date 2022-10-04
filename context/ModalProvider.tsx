@@ -26,7 +26,7 @@ export const ModalProvider = ({
   children: ReactNode
 }) => {
   const [modalState, setModalState] = useState<ModalState>({
-    modalType: '0x47191cb94c0b6925db9f15e000cf8e3e8864fc9bTOE'
+    modalType: undefined
   })
 
   useEffect(() => {

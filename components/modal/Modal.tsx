@@ -11,14 +11,12 @@ export type ModalProps = {
   content: JSX.Element
   /** Contents that will be wrapped by an unstyled button element to open the modal */
   trigger: JSX.Element
-  closeTrigger?: JSX.Element
 }
 
 export function Modal({
   modalName,
   content,
   trigger,
-  closeTrigger,
 }: ModalProps) {
   const { modalType, requestClose, requestOpen } = useModal()
 

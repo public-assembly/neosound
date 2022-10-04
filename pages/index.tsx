@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { AudioGrid, GridToggle } from '@/components/playlist'
+import { AudioGrid, GridToggle } from '@/components/Playlist'
 
 const Home: NextPage = () => {
   return (
