@@ -24,7 +24,6 @@ export function AudioThumbnail() {
   const { gridLayout } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
-
   return (
     <div
       className={`neosound__playlist--item ${gridLayout ? 'neosound__playlist--grid-item' : 'neosound__playlist--row-item'}`}

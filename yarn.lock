@@ -923,22 +923,22 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-functions/-/assemble-curation-functions-0.0.8.tgz#70b52cb80cf94c7683c0b7a832cc37263d21788e"
   integrity sha512-EN/rZMttJcnZ12FneVFCrQTPIEG0aX+kmFOcJi+6UmENZXAcMEIOtBbCXgUsLe43mdCiG0P6cCXEYyswLL5ryQ==
 
-"@public-assembly/audio-player-ui@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.6.tgz#e708ca254120f79ba98ed2a5df187217de491db4"
-  integrity sha512-1HdnQ9qZZsS74Pf5gvrLZXSaBTG/PaFXZesJUXL0Eatw0YfxbhAl9aqqhAPW9BH9u4pG9HRUegIu5Kg3Z2Ss7g==
+"@public-assembly/audio-player-ui@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.7.tgz#4da8dc392ab2c80aa4f9c007bb308457ad841107"
+  integrity sha512-TIEcj0DuQ8H+/or7/FzaJjl0OGGza9+yAPJcbWzO2jwPihXF3j5VC5ZnYsBvIQJMP1x79o2mcBqN7rtZK2vBnQ==
 
-"@public-assembly/erc721-drops-minter@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.3.tgz#a908189decd9785c1845acdb5e2d984bdd5d0dec"
-  integrity sha512-Freq8L2ypCxSAnqT/x0WCj632iTHaS6pcG73EIRuYW/4ViAziXAC+HMSQ8+BlT6uP1b8l70NcANKTKPY+weKFw==
+"@public-assembly/erc721-drops-minter@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.4.tgz#33ebd5c52ae125eab8042e8410f3570f819eb792"
+  integrity sha512-xGYLOrSeuQJfVm9jk2sN+3pc6/hm2Yp2tknwubyGMfyP+uT3A5+vllG7yh9g2jOqra6wg2olGzU6/YKeNaaoSQ==
   dependencies:
-    "@public-assembly/zora-drops-utils" "^0.0.9"
+    "@public-assembly/zora-drops-utils" "^0.1.0"
 
-"@public-assembly/zora-drops-utils@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.0.9.tgz#80bf536104ed2219139b4040a6a7afdd1634aa2b"
-  integrity sha512-QMxDy5xDA5wccTyqYONhyz3SfxIoLTjXeMieLTkH9Z5O0tB2KaSZRxIWCKjAAbEaFosa1nGr0wQHva3HcWVSCQ==
+"@public-assembly/zora-drops-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@public-assembly/zora-drops-utils/-/zora-drops-utils-0.1.0.tgz#4cec0af65a34cee1124a76c6c0508958bc9cc9c5"
+  integrity sha512-5yf55X7WK0X/kD8ZrCpHKI6qH6WvVac+2VdgAVxmWztlflYRqALiObspnJXC/t0cNwWY7kKfGtewRPZiyHkGMg==
 
 "@radix-ui/primitive@1.0.0":
   version "1.0.0"

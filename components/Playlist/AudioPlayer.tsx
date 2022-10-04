@@ -2,8 +2,9 @@ import { EditionsAudioPlayer } from '@public-assembly/audio-player-ui'
 import { usePlaylistProvider } from '@/context/PlaylistProvider'
 
 export function AudioPlayer() {
-  const { playList } = usePlaylistProvider()
+  const { playListContracts, networkId } = usePlaylistProvider()
+
   return (
-    <EditionsAudioPlayer contractAddresses={playList as string[]} />
+    <EditionsAudioPlayer contractAddresses={playListContracts as string[]} networkId={networkId} />
   )
 }
