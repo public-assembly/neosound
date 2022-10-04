@@ -1,21 +1,23 @@
-import "@fontsource/barlow";
+import "@fontsource/barlow"
 import 'styles/globals.css'
-import 'styles/playlist.css'
 import 'styles/audio-player.css'
+import 'styles/neosound.css'
 
 import type { AppProps } from 'next/app'
-import { AppWrapper, PageWrapper } from './../components'
-import { PlaylistProvider } from '@/context/PlaylistContext'
-
+import { AppWrapper, Header, Backdrop, AudioPlayer } from './../components'
+import { PlaylistProvider } from '@/context/PlaylistProvider'
 
 function NetLabel({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
-      <PageWrapper>
-        <PlaylistProvider>
+      <PlaylistProvider>
+        <Header />
+        <main className="z-10 relative">
           <Component {...pageProps} />
-        </PlaylistProvider>
-      </PageWrapper>
+          <AudioPlayer />
+        </main>
+        <Backdrop />
+      </PlaylistProvider>
     </AppWrapper>
   )
 }

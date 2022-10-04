@@ -19,7 +19,8 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/context/*": ["context/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/hooks/*": ["hooks/*"],
+      "@/utils/*": ["utils/*"]
     },
     "allowSyntheticDefaultImports": true
   },

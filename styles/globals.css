@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import './theme.css';
+@import './playlist.css';
+@import './modal.css';
 
 html,
 body {
@@ -21,6 +23,7 @@ a {
 
 header {
   height: var(--header-height);
+  z-index: 50;
 }
 
 footer {
@@ -28,5 +31,5 @@ footer {
 }
 
 main {
-  min-height: calc(100vh - (var(--footer-height) + var(--header-height)));
+  min-height: calc(100vh - var(--header-height));
 }

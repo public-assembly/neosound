@@ -1,0 +1,314 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        { "internalType": "string", "name": "_title", "type": "string" },
+        {
+          "internalType": "contract IERC721",
+          "name": "_curationPass",
+          "type": "address"
+        },
+        { "internalType": "uint256", "name": "_curationLimit", "type": "uint256" },
+        { "internalType": "bool", "name": "_isActive", "type": "bool" }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    { "inputs": [], "name": "Access_MissingPass", "type": "error" },
+    { "inputs": [], "name": "Access_Unauthorized", "type": "error" },
+    { "inputs": [], "name": "CurationLimitExceeded", "type": "error" },
+    { "inputs": [], "name": "Finalized", "type": "error" },
+    { "inputs": [], "name": "Inactive", "type": "error" },
+    { "inputs": [], "name": "ListingAlreadyExists", "type": "error" },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "CurationFinalized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "curationLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "CurationLimitUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "curationPass",
+          "type": "address"
+        }
+      ],
+      "name": "CurationPassUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "CurationPaused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "CurationResumed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "curator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "listingAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ListingAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "curator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "listingAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ListingRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        { "indexed": false, "internalType": "string", "name": "title", "type": "string" }
+      ],
+      "name": "TitleUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "listing", "type": "address" }],
+      "name": "addListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "curationLimit",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "curationPass",
+      "outputs": [{ "internalType": "contract IERC721", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "finalizeCuration",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "flipIsActiveBool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isActive",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isFinalized",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "listingCurators",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "listings",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "listing", "type": "address" }],
+      "name": "onwerAddListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "listing", "type": "address" }],
+      "name": "ownerRemoveListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "listing", "type": "address" }],
+      "name": "removeListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "title",
+      "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "_newLimit", "type": "uint256" }],
+      "name": "updateCurationLimit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "contract IERC721", "name": "_curationPass", "type": "address" }
+      ],
+      "name": "updateCurationPass",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "string", "name": "_title", "type": "string" }],
+      "name": "updateTitle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "viewAllListings",
+      "outputs": [{ "internalType": "address[]", "name": "", "type": "address[]" }],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+}

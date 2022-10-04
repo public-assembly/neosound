@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import { DropsComponents } from '@public-assembly/erc721-drops-minter'
-import { usePlaylistProvider } from '@/context/PlaylistContext'
+import { useDropsContractProvider } from "@public-assembly/zora-drops-utils";
+import { usePlaylistProvider } from '@/context/PlaylistProvider'
 import { useHover } from '@/hooks/useHover'
+import { Modal } from '../modal/Modal'
+import { AudioMint } from './AudioMint';
 
 export function PlayIconRow() {
   return (
@@ -19,8 +22,9 @@ export function PlayIconRow() {
 
 export function AudioThumbnail() {
   const { gridLayout } = usePlaylistProvider()
-  const [hoverRef, isHovered] = useHover<HTMLDivElement>();
-  
+  const [hoverRef, isHovered] = useHover<HTMLDivElement>()
+  const { collectionData } = useDropsContractProvider()
+
   return (
     <div
       className={`neosound__playlist--item ${gridLayout ? 'neosound__playlist--grid-item' : 'neosound__playlist--row-item'}`}
@@ -37,19 +41,24 @@ export function AudioThumbnail() {
           <DropsComponents.MetadataName />
         </div>
       }
-      {isHovered && (
-        <button
-          className="w-6 h-6 hidden sm:block">
-          <Image
-            src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
-            alt="More details"
-            layout="responsive"
-            width={24}
-            height={24}
-            objectFit="cover"
-          />
-        </button>
-      )}
+      <Modal
+        modalName={`${collectionData?.address}${collectionData?.symbol}`}
+        trigger={
+          <div className="w-6 h-6 hidden sm:block relative">
+            <Image
+              src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
+              alt="More details"
+              layout="responsive"
+              width={24}
+              height={24}
+              objectFit="cover"
+            />
+          </div>
+        }
+        content={
+          <AudioMint />
+        }
+      />
     </div>
   )
 }
