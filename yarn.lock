@@ -928,10 +928,10 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.7.tgz#4da8dc392ab2c80aa4f9c007bb308457ad841107"
   integrity sha512-TIEcj0DuQ8H+/or7/FzaJjl0OGGza9+yAPJcbWzO2jwPihXF3j5VC5ZnYsBvIQJMP1x79o2mcBqN7rtZK2vBnQ==
 
-"@public-assembly/erc721-drops-minter@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.4.tgz#33ebd5c52ae125eab8042e8410f3570f819eb792"
-  integrity sha512-xGYLOrSeuQJfVm9jk2sN+3pc6/hm2Yp2tknwubyGMfyP+uT3A5+vllG7yh9g2jOqra6wg2olGzU6/YKeNaaoSQ==
+"@public-assembly/erc721-drops-minter@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.5.tgz#8db436b81eb0367af15be662235096e20141c4e9"
+  integrity sha512-cV5U4AI0WK1HZ/gcMWUoWxBZxw0K5kxam4OGBrZ14c8qmNEEUCCpLmOzEd3R9LtaYMHc7ejCBoEa8Fkusjtu7Q==
   dependencies:
     "@public-assembly/zora-drops-utils" "^0.1.0"
 

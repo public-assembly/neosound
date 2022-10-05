@@ -40,9 +40,9 @@ export function AudioThumbnail() {
       </div>
       {!gridLayout &&
         <div className={`flex flex-row justify-start`}>
-          <DropsComponents.MetadataCreator />
+          <DropsComponents.MetadataCreator label={false} />
           <span>&nbsp;-&nbsp;</span>
-          <DropsComponents.MetadataName />
+          <DropsComponents.MetadataName label={false} />
         </div>
       }
       <Modal

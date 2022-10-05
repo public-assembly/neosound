@@ -23,12 +23,12 @@ export function AudioMint() {
         <div className="flex flex-col h-full overflow-x-hidden justify-between">
           <div className="flex flex-col gap-2">
             <div className="flex flex-row w-full justify-between">
-              <DropsComponents.Inventory />
-              <DropsComponents.TotalPrice />
+              <DropsComponents.Inventory label={false} />
+              <DropsComponents.TotalPrice label="price" ethSymbol='Eth'/>
             </div>
             <div className="flex flex-col gap-2">
-              <DropsComponents.MetadataName />
-              <DropsComponents.MetadataCreator />
+              <DropsComponents.MetadataName label={false} />
+              <DropsComponents.MetadataCreator label="Artist:"/>
             </div>
           </div>
           <AuthCheck
