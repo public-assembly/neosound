@@ -1,8 +1,9 @@
 import { useAuth } from 'hooks/useAuth'
+import { isClientSide } from '@/utils/window'
 
 export function DisconnectButton() {
   const { logout, isConnected } = useAuth()
-  if (!isConnected) return null
+  if (!isClientSide || !isConnected) return null
   return (
     <button
       className="ns-textLight flex items-center border border-white px-4 py-1  hover:text-white"
