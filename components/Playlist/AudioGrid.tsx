@@ -7,14 +7,16 @@ export function AudioGrid() {
   const { gridLayout, playListContracts } = usePlaylistProvider()
   if (!isClientSide) return null
   return (
-    <div className="mx-auto pb-28 px-6">
-      <div className={`neosound__playlist--wrapper ${gridLayout ? 'neosound__playlist--grid-view' : 'neosound__playlist--list-view'}`}>
+    <div className="mx-auto px-6 pb-28 pt-16 sm:px-12">
+      <div
+        className={`neosound__playlist--wrapper ${
+          gridLayout ? 'neosound__playlist--grid-view' : 'neosound__playlist--list-view'
+        }`}>
         {playListContracts.map((address: any) => (
           <DropsContractProvider
             key={address}
             collectionAddress={address}
-            networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}
-          >
+            networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}>
             <AudioThumbnail />
           </DropsContractProvider>
         ))}

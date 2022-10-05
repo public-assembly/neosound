@@ -6,3 +6,15 @@
 .pa-audio-player__player-wrapper * {
   color: rgb(255, 255, 255);
 }
+
+.pa-audio-player__progress-range {
+  accent-color: rgb(255, 255, 255);
+}
+
+.pa-audio-player__volume-slider {
+  accent-color: rgb(255, 255, 255);
+}
+.pa-audio-player__volume-controls-volume > div {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 0;
+}

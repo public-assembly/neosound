@@ -3,7 +3,7 @@
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 48%,
+    rgba(0, 0, 0, 1) 64%,
     rgba(255, 137, 222, 1) 100%
   );
 }
@@ -21,7 +21,7 @@
 }
 
 .neosound__playlist--grid-item {
-  @apply relative  aspect-square shadow-lg shadow-neutral-200/10;
+  @apply relative  aspect-square shadow-sm shadow-neutral-200/10;
 }
 
 .neosound__playlist--row-item {
