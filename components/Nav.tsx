@@ -29,7 +29,7 @@ export function Nav(): JSX.Element {
   return (
     <>
       {/* DESKTOP NAV */}
-      <div className="hidden sm:flex flex-row gap-4">
+      <div className="hidden flex-row gap-4 sm:flex">
         {pages.map((page) => (
           <Link passHref href={page.slug} key={page.slug}>
             <button
@@ -53,7 +53,7 @@ export function Nav(): JSX.Element {
       </div>
       {/* MOBILE NAV */}
       {mobileMenuOpen && (
-        <div className="sm:hidden text-6xl font-semibold  absolute inset-0 ns-mobile__menu h-screen   flex flex-col justify-center z-50">
+        <div className="ns-mobile__menu absolute inset-0  z-50 flex h-screen flex-col   justify-center text-6xl font-semibold sm:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="fixed top-2 left-6">

@@ -43,9 +43,7 @@ export function AppWrapper({ children }: { children: JSX.Element }) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          <ModalProvider>
-            {children}
-          </ModalProvider>
+          <ModalProvider>{children}</ModalProvider>
         </SWRConfig>
       </RainbowKitProvider>
     </WagmiConfig>

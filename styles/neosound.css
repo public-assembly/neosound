@@ -77,3 +77,8 @@
 .ns-textLight {
   color: var(--ns__text-light);
 }
+
+.ns_views-toggle {
+  position: fixed;
+  background-color: #000;
+}

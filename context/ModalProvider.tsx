@@ -20,13 +20,9 @@ export const ModalContext = createContext<ModalContextType>([
   () => null,
 ] as ModalContextType)
 
-export const ModalProvider = ({
-  children
-}: {
-  children: ReactNode
-}) => {
+export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modalState, setModalState] = useState<ModalState>({
-    modalType: undefined
+    modalType: undefined,
   })
 
   useEffect(() => {
@@ -34,13 +30,8 @@ export const ModalProvider = ({
   }, [modalState])
 
   return (
-    <ModalContext.Provider
-      value={[modalState, setModalState]}
-    >
-      <div
-        id="modal-root"
-        style={{ zIndex: 9000, position: 'fixed', top: 0, left: 0, }}
-      />
+    <ModalContext.Provider value={[modalState, setModalState]}>
+      <div id="modal-root" style={{ zIndex: 9000, position: 'fixed', top: 0, left: 0 }} />
       {children}
     </ModalContext.Provider>
   )

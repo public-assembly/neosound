@@ -13,11 +13,7 @@ export type ModalProps = {
   trigger: JSX.Element
 }
 
-export function Modal({
-  modalName,
-  content,
-  trigger,
-}: ModalProps) {
+export function Modal({ modalName, content, trigger }: ModalProps) {
   const { modalType, requestClose, requestOpen } = useModal()
 
   const modalHandler = useCallback(() => {
@@ -26,10 +22,8 @@ export function Modal({
 
   return (
     <>
-      <div>
-        <button onClick={modalHandler}>
-          {trigger}
-        </button>
+      <div className="flex">
+        <button onClick={modalHandler}>{trigger}</button>
       </div>
       <ModalPortal>
         <AnimatePresence>
@@ -41,11 +35,8 @@ export function Modal({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className='neosound__modal--wrapper'
-              >
-                <div className="neosound__modal--inner">
-                  {content}
-                </div>
+                className="neosound__modal--wrapper">
+                <div className="neosound__modal--inner">{content}</div>
               </motion.div>
               <ModalOverlay modalName={modalName} />
             </>
