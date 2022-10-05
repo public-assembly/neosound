@@ -33,7 +33,7 @@ export const GridToggle = () => {
         ) : (
           <button
             onClick={toggleLayout}
-            className="pa_views-toggle__list"
+            className="pa_views-toggle__list hidden md:block"
             onMouseEnter={() => setHoverList(true)}
             onMouseLeave={() => setHoverList(false)}>
             <Image
