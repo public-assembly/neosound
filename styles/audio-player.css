@@ -1,8 +1,8 @@
 .pa-audio-player__player-wrapper {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0, 0, 0, 0.8);
   border: 0;
 }
 
 .pa-audio-player__player-wrapper * {
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
 }

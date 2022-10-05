@@ -1,4 +1,4 @@
-import "@fontsource/barlow"
+import '@fontsource/barlow'
 import 'styles/globals.css'
 import 'styles/audio-player.css'
 import 'styles/neosound.css'
@@ -15,7 +15,7 @@ function NetLabel({ Component, pageProps }: AppProps) {
         networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}
       >
         <Header />
-        <main className="z-10 relative">
+        <main className="relative z-10">
           <Component {...pageProps} />
           <AudioPlayer />
         </main>

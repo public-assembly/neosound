@@ -5,7 +5,6 @@ import { publicProvider } from 'wagmi/providers/public'
 import { SWRConfig } from 'swr'
 import '@rainbow-me/rainbowkit/styles.css'
 import { ModalProvider } from '@/context/ModalProvider'
-import { alchemyProvider } from 'wagmi/providers/alchemy'
 
 const { chains, provider } = configureChains(
   [
@@ -48,9 +47,7 @@ export function AppWrapper({ children }: { children: JSX.Element }) {
             showOnShallow={true}
             options={{ showSpinner: false }}
           />
-          <ModalProvider>
-            {children}
-          </ModalProvider>
+          <ModalProvider>{children}</ModalProvider>
         </SWRConfig>
       </RainbowKitProvider>
     </WagmiConfig>
