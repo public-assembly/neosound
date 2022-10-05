@@ -1,3 +1,1 @@
-export const drawerStyles = {
-  
-}
+export const drawerStyles = {}

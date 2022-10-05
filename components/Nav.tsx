@@ -30,7 +30,7 @@ export function Nav(): JSX.Element {
   return (
     <>
       {/* DESKTOP NAV */}
-      <div className="hidden sm:flex flex-row gap-4">
+      <div className="hidden flex-row gap-4 sm:flex">
         <Link passHref href={`/`}>
           <a
             className={`${
@@ -39,9 +39,7 @@ export function Nav(): JSX.Element {
             Listen
           </a>
         </Link>
-        <CurateModal trigger={
-          <span className="ns-nav__item">Curate</span>
-        }/>
+        <CurateModal trigger={<span className="ns-nav__item">Curate</span>} />
         <Link passHref href={`/deploy`}>
           <a
             className={`${

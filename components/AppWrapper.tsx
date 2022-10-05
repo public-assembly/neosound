@@ -12,7 +12,7 @@ const { chains, provider } = configureChains(
       (chain) => chain.id.toString() === process.env.NEXT_PUBLIC_CHAIN_ID
     )!,
   ],
-  [publicProvider()],
+  [publicProvider()]
 )
 const { connectors } = getDefaultWallets({
   appName: 'NeoSound',

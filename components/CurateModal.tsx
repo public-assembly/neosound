@@ -13,15 +13,23 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
   if (!isClientSide) return null
   return (
     <Modal
-      modalName='curation-interface'
+      modalName="curation-interface"
       content={
-        <AuthCheck formUI={<CurationInterface
-          connectionStatus={isConnected}
-          userAddress={address}
-          curationContractAddress={curationContractAddress}
-          network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
-          closeButton={<button onClick={requestClose} className="justify-end">Close</button>}
-        />}/>
+        <AuthCheck
+          formUI={
+            <CurationInterface
+              connectionStatus={isConnected}
+              userAddress={address}
+              curationContractAddress={curationContractAddress}
+              network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
+              closeButton={
+                <button onClick={requestClose} className="justify-end">
+                  Close
+                </button>
+              }
+            />
+          }
+        />
       }
       trigger={trigger}
     />

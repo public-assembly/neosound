@@ -60,11 +60,7 @@
   },
   "lint-staged": {
     "**/*": [
-      "eslint --fix",
       "prettier --write ."
-    ],
-    "**/*.{ts,tsx}": [
-      "tsc-files --noEmit"
     ]
   },
   "engines": {
