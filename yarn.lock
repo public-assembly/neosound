@@ -916,10 +916,10 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-functions/-/assemble-curation-functions-0.0.8.tgz#70b52cb80cf94c7683c0b7a832cc37263d21788e"
   integrity sha512-EN/rZMttJcnZ12FneVFCrQTPIEG0aX+kmFOcJi+6UmENZXAcMEIOtBbCXgUsLe43mdCiG0P6cCXEYyswLL5ryQ==
 
-"@public-assembly/assemble-curation-interface@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-interface/-/assemble-curation-interface-0.0.5.tgz#aa69f4c1b012f8a0aef738f0fa4208710806b360"
-  integrity sha512-T+3ffGpYnVB+9RqrSWXgoR8fQ4c05PlkG0ra8xDf34d7x1BWeIV3KJkDPwywXnZbMOlcmZyrtvzgqHHQG4etjg==
+"@public-assembly/assemble-curation-interface@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-interface/-/assemble-curation-interface-0.0.6.tgz#faa5cf01a26bf48ba0aeb3a5926a8e901f60d8aa"
+  integrity sha512-/kisQfn9ECJAvbjMWaaWbOk31hXCq7wHafSD0y8KOURPnN6FK/cYQDOwz6aEHAK/6G5uk80HsbIiKt6BahOQEA==
 
 "@public-assembly/assemble-curation-validation@^0.0.3":
   version "0.0.3"
