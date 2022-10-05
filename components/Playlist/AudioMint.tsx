@@ -6,29 +6,30 @@ import { AuthCheck } from '../auth'
 export function AudioMint() {
   const { requestClose } = useModal()
   const { ensName, isConnected } = useAuth()
-  
+
   return (
     <div className="px-6 pb-6">
-      <div className="py-3 flex flex-row justify-between w-full">
-        {isConnected
-          ? <div className="px-2 py-1 border border-1 border-black">{ensName}</div>
-          : <div />
-        }
-        <div className="px-2 py-1 border border-1 border-black">
+      <div className="flex w-full flex-row justify-between py-3">
+        {isConnected ? (
+          <div className="border-1 border border-black px-2 py-1">{ensName}</div>
+        ) : (
+          <div />
+        )}
+        <div className="border-1 border border-black px-2 py-1">
           <button onClick={requestClose}>Close</button>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6">
         <DropsComponents.Thumbnail />
-        <div className="flex flex-col h-full overflow-x-hidden justify-between">
+        <div className="flex h-full flex-col justify-between overflow-x-hidden">
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row w-full justify-between">
+            <div className="flex w-full flex-row justify-between">
               <DropsComponents.Inventory label={false} />
-              <DropsComponents.TotalPrice label="price" ethSymbol='Eth'/>
+              <DropsComponents.TotalPrice label="price" ethSymbol="Eth" />
             </div>
             <div className="flex flex-col gap-2">
               <DropsComponents.MetadataName label={false} />
-              <DropsComponents.MetadataCreator label="Artist:"/>
+              <DropsComponents.MetadataCreator label="Artist:" />
             </div>
           </div>
           <AuthCheck
@@ -36,11 +37,11 @@ export function AudioMint() {
               <div className="flex flex-col gap-4">
                 <DropsComponents.MintQuantity />
                 <DropsComponents.MintButton />
-              </div>  
+              </div>
             }
           />
         </div>
       </div>
     </div>
-  ) 
+  )
 }

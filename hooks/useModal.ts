@@ -16,7 +16,7 @@ export function useModal() {
         return
       }
       return setState({
-        modalType: nextModalType
+        modalType: nextModalType,
       })
     },
     [modalType, setState]

@@ -13,8 +13,8 @@ export type PlaylistProps = {
 export type PlaylistReturnTypes = {
   toggleLayout?: () => void
   setTrack?: (track?: any) => void
-  trackIndex?: number,
-  trackThumbnail?: string,
+  trackIndex?: number
+  trackThumbnail?: string
   gridLayout?: boolean
   curationPlaylist?: any
   playListContracts?: string[]
@@ -23,8 +23,8 @@ export type PlaylistReturnTypes = {
 }
 
 const PlaylistContext = createContext<PlaylistReturnTypes>({
-  toggleLayout: () => { },
-  setTrack: () => { },
+  toggleLayout: () => {},
+  setTrack: () => {},
   trackIndex: 0,
   gridLayout: false,
 })
@@ -33,7 +33,11 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
-export function PlaylistProvider({ children, curationContractAddress, networkId }: PlaylistProps) {
+export function PlaylistProvider({
+  children,
+  curationContractAddress,
+  networkId,
+}: PlaylistProps) {
   const [gridLayout, setGridLayout] = useState(false)
   const [trackIndex, setTrackIndex] = useState(0)
   const [trackThumbnail, setTrackThumbnail] = useState('')
@@ -43,12 +47,12 @@ export function PlaylistProvider({ children, curationContractAddress, networkId 
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
 
-  const { 
+  const {
     getListingsRead: playlistData,
     // getListingsError,
     // getListingsLoading,
   } = useCurationFunctions({
-    curationContractAddress
+    curationContractAddress,
   })
 
   const santizedPlaylist = useMemo(() => {
@@ -69,7 +73,9 @@ export function PlaylistProvider({ children, curationContractAddress, networkId 
         try {
           return {
             curatedContract: entry['curatedContract'],
-            curationTargetType: returnCurationType(entry['curationTargetType'].toString()),
+            curationTargetType: returnCurationType(
+              entry['curationTargetType'].toString()
+            ),
             hasTokenId: entry['hasTokenId'],
             tokenId: entry['tokenId']?.toString(),
             curator: entry['curator'],
@@ -87,7 +93,9 @@ export function PlaylistProvider({ children, curationContractAddress, networkId 
   const playListContracts = useMemo(() => {
     if (santizedPlaylist.length) {
       try {
-        const contracts = santizedPlaylist.map((item: any) => item?.curatedContract?.toLowerCase())
+        const contracts = santizedPlaylist.map((item: any) =>
+          item?.curatedContract?.toLowerCase()
+        )
         return contracts
       } catch (err) {
         console.error(err)
@@ -97,13 +105,16 @@ export function PlaylistProvider({ children, curationContractAddress, networkId 
     }
   }, [santizedPlaylist])
 
-  const setTrack = useCallback((track: any) => {
-    const item = (contract?: string) => contract === track?.address
-    const index = playListContracts?.findIndex(item)
-    const thumbnail = track?.editionMetadata?.imageURI
-    setTrackIndex(index)
-    setTrackThumbnail(addIPFSGateway(thumbnail))
-  }, [setTrackIndex, playListContracts])
+  const setTrack = useCallback(
+    (track: any) => {
+      const item = (contract?: string) => contract === track?.address
+      const index = playListContracts?.findIndex(item)
+      const thumbnail = track?.editionMetadata?.imageURI
+      setTrackIndex(index)
+      setTrackThumbnail(addIPFSGateway(thumbnail))
+    },
+    [setTrackIndex, playListContracts]
+  )
 
   return (
     <PlaylistContext.Provider
