@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom'
 import { isClientSide } from '@/utils/window'
 
 export const ModalPortal: React.FC<{children?: React.ReactNode}> = ({ children }) => {
+  if (!isClientSide) return null
+  
   const el = React.useRef(document.createElement('div'))
 
   React.useEffect(() => {
@@ -10,8 +12,6 @@ export const ModalPortal: React.FC<{children?: React.ReactNode}> = ({ children }
     popoutRoot!.appendChild(el.current)
     return () => void popoutRoot!.removeChild(el.current)
   }, [])
-
-  if (!isClientSide) return null
 
   return createPortal(children, el.current)
 }

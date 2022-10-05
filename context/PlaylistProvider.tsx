@@ -19,6 +19,7 @@ export type PlaylistReturnTypes = {
   curationPlaylist?: any
   playListContracts?: string[]
   networkId?: '1' | '5'
+  curationContractAddress?: string
 }
 
 const PlaylistContext = createContext<PlaylistReturnTypes>({
@@ -115,6 +116,7 @@ export function PlaylistProvider({ children, curationContractAddress, networkId 
         trackIndex,
         setTrack,
         trackThumbnail,
+        curationContractAddress,
       }}>
       {children}
     </PlaylistContext.Provider>
