@@ -31,3 +31,12 @@
 .neosound__playlist--list-view {
   @apply mx-auto;
 }
+
+.neosound__playlist--row-title {
+  overflow-x: scroll;
+  max-width: 250;
+}
+
+.neosound__playlist--row-title span {
+  white-space: nowrap;
+}

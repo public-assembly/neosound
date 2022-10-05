@@ -25,6 +25,7 @@ export function AudioThumbnail() {
   const { gridLayout, setTrack } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
+  console.log(collectionData)
   return (
     <div
       className={`neosound__playlist--item ${
@@ -32,20 +33,24 @@ export function AudioThumbnail() {
       } `}
       ref={hoverRef}>
       <div
-        className={`${gridLayout ? 'w-full' : 'w-20'} relative h-full cursor-pointer `}>
-        <button onClick={() => setTrack(collectionData)} className="h-full w-full ">
+        className={`${
+          gridLayout ? 'w-full' : 'h-20 w-20'
+        } relative h-full cursor-pointer `}>
+        <button onClick={() => setTrack(collectionData)} className="inset-0 h-20 w-20">
           {!gridLayout && isHovered && <PlayIconRow />}
-          <DropsComponents.Thumbnail />
+          <DropsComponents.Thumbnail className="h-full w-full" />
         </button>
       </div>
       {gridLayout && (
         <div className="absolute inset-0 z-10 flex flex-col justify-between bg-[rgba(0,0,0,0.4)] p-6 font-semibold text-stone-300 opacity-0 duration-300 hover:opacity-100">
-          <div className=" h-full">
+          <div className="h-full">
             <div className="mb-4 text-xs font-thin uppercase sm:text-sm">
               Curated by: DYNAMIC{' '}
             </div>
-            <DropsComponents.MetadataCreator />
-            <DropsComponents.MetadataName />
+            <div className="title flex flex-row">
+              <DropsComponents.MetadataCreator />
+              <DropsComponents.MetadataName />
+            </div>
             <Modal
               modalName={`${collectionData?.address}${collectionData?.symbol}`}
               trigger={
@@ -83,7 +88,8 @@ export function AudioThumbnail() {
         <div className="flex items-center gap-4">
           {!gridLayout && (
             <>
-              <div className={`flex flex-row items-center justify-between`}>
+              <div
+                className={`neosound__playlist--row-title flex flex-row items-center justify-between`}>
                 <DropsComponents.MetadataCreator label={false} />
                 <span>&nbsp;-&nbsp;</span>
                 <DropsComponents.MetadataName label={false} />
