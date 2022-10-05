@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { DropsComponents } from '@public-assembly/erc721-drops-minter'
-import { useDropsContractProvider } from "@public-assembly/zora-drops-utils";
+import { useDropsContractProvider } from "@public-assembly/zora-drops-utils"
 import { usePlaylistProvider } from '@/context/PlaylistProvider'
 import { useHover } from '@/hooks/useHover'
 import { Modal } from '../modal/Modal'
@@ -21,7 +21,7 @@ export function PlayIconRow() {
 }
 
 export function AudioThumbnail() {
-  const { gridLayout } = usePlaylistProvider()
+  const { gridLayout, setTrack } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
   return (
@@ -29,15 +29,20 @@ export function AudioThumbnail() {
       className={`neosound__playlist--item ${gridLayout ? 'neosound__playlist--grid-item' : 'neosound__playlist--row-item'}`}
       ref={hoverRef}
     >
-      <div className={`${gridLayout ? 'w-full' : 'w-20'} relative cursor-pointer`}>
-        {!gridLayout && isHovered && <PlayIconRow />}
-        <DropsComponents.Thumbnail />
+      <div className={`${gridLayout ? 'w-full' : 'w-20 h-20'} relative cursor-pointer`}>
+        <button
+          onClick={() => setTrack(collectionData)}
+          className="w-full"
+        >
+          {!gridLayout && isHovered && <PlayIconRow />}
+          <DropsComponents.Thumbnail />
+        </button>
       </div>
       {!gridLayout &&
         <div className={`flex flex-row justify-start`}>
-          <DropsComponents.MetadataCreator />
+          <DropsComponents.MetadataCreator label={false} />
           <span>&nbsp;-&nbsp;</span>
-          <DropsComponents.MetadataName />
+          <DropsComponents.MetadataName label={false} />
         </div>
       }
       <Modal
