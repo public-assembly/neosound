@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { CurateModal } from './CurateModal'
 
 const pages = [
   {
@@ -29,17 +30,34 @@ export function Nav(): JSX.Element {
   return (
     <>
       {/* DESKTOP NAV */}
-      <div className="hidden flex-row gap-4 sm:flex">
-        {pages.map((page) => (
-          <Link passHref href={page.slug} key={page.slug}>
-            <button
-              className={`${
-                router.asPath === page.slug ? 'ns-nav__item_current' : 'ns-nav__item'
-              }`}>
-              {page.title}
-            </button>
-          </Link>
-        ))}
+      <div className="hidden sm:flex flex-row gap-4">
+        <Link passHref href={`/`}>
+          <a
+            className={`${
+              router.asPath === '/' ? 'ns-nav__item_current' : 'ns-nav__item'
+            }`}>
+            Listen
+          </a>
+        </Link>
+        <CurateModal trigger={
+          <span className="ns-nav__item">Curate</span>
+        }/>
+        <Link passHref href={`/deploy`}>
+          <a
+            className={`${
+              router.asPath === '/deploy' ? 'ns-nav__item_current' : 'ns-nav__item'
+            }`}>
+            Deploy
+          </a>
+        </Link>
+        <Link passHref href={`/about`}>
+          <a
+            className={`${
+              router.asPath === '/about' ? 'ns-nav__item_current' : 'ns-nav__item'
+            }`}>
+            About
+          </a>
+        </Link>
       </div>
       <div className="block sm:hidden">
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

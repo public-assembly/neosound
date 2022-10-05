@@ -5,7 +5,6 @@ import React, {
   useState,
   ReactNode,
 } from 'react'
-import { useEffect } from 'react'
 
 export type ModalType = string | undefined
 
@@ -24,10 +23,6 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modalState, setModalState] = useState<ModalState>({
     modalType: undefined,
   })
-
-  useEffect(() => {
-    console.log('modalState', modalState)
-  }, [modalState])
 
   return (
     <ModalContext.Provider value={[modalState, setModalState]}>

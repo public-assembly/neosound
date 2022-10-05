@@ -1,14 +1,18 @@
 import NextNProgress from 'nextjs-progressbar'
 import { getDefaultWallets, RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit'
-import { createClient, chain, configureChains, WagmiConfig } from 'wagmi'
+import { WagmiConfig, configureChains, createClient, defaultChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { SWRConfig } from 'swr'
 import '@rainbow-me/rainbowkit/styles.css'
 import { ModalProvider } from '@/context/ModalProvider'
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.goerli],
-  [publicProvider()]
+  [
+    defaultChains.find(
+      (chain) => chain.id.toString() === process.env.NEXT_PUBLIC_CHAIN_ID
+    )!,
+  ],
+  [publicProvider()],
 )
 const { connectors } = getDefaultWallets({
   appName: 'NeoSound',

@@ -10,7 +10,10 @@ import { PlaylistProvider } from '@/context/PlaylistProvider'
 function NetLabel({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
-      <PlaylistProvider>
+      <PlaylistProvider
+        curationContractAddress="0xe61787247Dac262c4394b457c958C69BA7080501"
+        networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}
+      >
         <Header />
         <main className="relative z-10">
           <Component {...pageProps} />

@@ -22,10 +22,9 @@ export function PlayIconRow() {
 }
 
 export function AudioThumbnail() {
-  const { gridLayout } = usePlaylistProvider()
+  const { gridLayout, setTrack } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
-
   return (
     <div
       className={`neosound__playlist--item ${
@@ -33,8 +32,13 @@ export function AudioThumbnail() {
       }`}
       ref={hoverRef}>
       <div className={`${gridLayout ? 'w-full' : 'w-20'} relative cursor-pointer`}>
-        {!gridLayout && isHovered && <PlayIconRow />}
-        <DropsComponents.Thumbnail />
+        <button
+          onClick={() => setTrack(collectionData)}
+          className="w-full"
+        >
+          {!gridLayout && isHovered && <PlayIconRow />}
+          <DropsComponents.Thumbnail />
+        </button>
       </div>
       {gridLayout && (
         <div className="absolute inset-0 z-10 flex flex-col justify-between bg-[rgba(0,0,0,0.4)] p-6 font-semibold text-stone-300 opacity-0 duration-300 hover:opacity-100">
@@ -61,27 +65,30 @@ export function AudioThumbnail() {
               content={<AudioMint />}
             />
           </div>
-          <div className="flex  justify-end">
-            <Image
-              src={'/neosound-icons/player/play/play-default.svg'}
-              alt="Play"
-              width={48}
-              height={48}
-              layout="fixed"
-              className="cursor-pointer"
-            />
+          <div className="flex justify-end">
+            <button
+              onClick={() => setTrack(collectionData)}
+            >
+              <Image
+                src={'/neosound-icons/player/play/play-default.svg'}
+                alt="Play"
+                width={48}
+                height={48}
+                layout="fixed"
+                className="cursor-pointer"
+              />
+            </button>
           </div>
         </div>
       )}
-
       <div className=" flex w-full flex-col justify-between  px-0 md:flex-row md:items-center md:gap-0 md:pr-6">
         <div className="flex items-center gap-4">
           {!gridLayout && (
             <>
               <div className={`flex flex-row items-center justify-between  `}>
-                <DropsComponents.MetadataCreator />
+                <DropsComponents.MetadataCreator label={false}/>
                 <span>&nbsp;-&nbsp;</span>
-                <DropsComponents.MetadataName />
+                <DropsComponents.MetadataName label={false}/>
               </div>
               <Modal
                 modalName={`${collectionData?.address}${collectionData?.symbol}`}
