@@ -8,7 +8,7 @@ import { AudioMint } from './AudioMint'
 
 export function PlayIconRow() {
   return (
-    <div className="absolute inset-0 z-10 flex  flex-col items-center justify-center">
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
       <Image
         src={'/neosound-icons/player/play/play-default.svg'}
         alt="Play"
@@ -29,13 +29,11 @@ export function AudioThumbnail() {
     <div
       className={`neosound__playlist--item ${
         gridLayout ? 'neosound__playlist--grid-item' : 'neosound__playlist--row-item'
-      }`}
+      } `}
       ref={hoverRef}>
-      <div className={`${gridLayout ? 'w-full' : 'w-20'} relative cursor-pointer`}>
-        <button
-          onClick={() => setTrack(collectionData)}
-          className="w-full"
-        >
+      <div
+        className={`${gridLayout ? 'w-full' : 'w-20'} relative h-full cursor-pointer `}>
+        <button onClick={() => setTrack(collectionData)} className="h-full w-full ">
           {!gridLayout && isHovered && <PlayIconRow />}
           <DropsComponents.Thumbnail />
         </button>
@@ -51,24 +49,24 @@ export function AudioThumbnail() {
             <Modal
               modalName={`${collectionData?.address}${collectionData?.symbol}`}
               trigger={
-                <div className="relative z-50 mt-4 hidden h-6 w-6 cursor-pointer sm:block">
-                  <Image
-                    src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
-                    alt="More details"
-                    layout="responsive"
-                    width={24}
-                    height={24}
-                    objectFit="cover"
-                  />
+                <div className="relative z-50 mt-4 h-6 w-6 cursor-pointer sm:block">
+                  {isHovered && (
+                    <Image
+                      src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
+                      alt="More details"
+                      layout="responsive"
+                      width={24}
+                      height={24}
+                      objectFit="cover"
+                    />
+                  )}
                 </div>
               }
               content={<AudioMint />}
             />
           </div>
-          <div className="flex justify-end">
-            <button
-              onClick={() => setTrack(collectionData)}
-            >
+          <div className="flex items-center justify-end">
+            <button onClick={() => setTrack(collectionData)}>
               <Image
                 src={'/neosound-icons/player/play/play-default.svg'}
                 alt="Play"
@@ -81,19 +79,19 @@ export function AudioThumbnail() {
           </div>
         </div>
       )}
-      <div className=" flex w-full flex-col justify-between  px-0 md:flex-row md:items-center md:gap-0 md:pr-6">
+      <div className=" flex w-full flex-col justify-between px-0 md:flex-row md:items-center md:pr-6">
         <div className="flex items-center gap-4">
           {!gridLayout && (
             <>
-              <div className={`flex flex-row items-center justify-between  `}>
-                <DropsComponents.MetadataCreator label={false}/>
+              <div className={`flex flex-row items-center justify-between`}>
+                <DropsComponents.MetadataCreator label={false} />
                 <span>&nbsp;-&nbsp;</span>
-                <DropsComponents.MetadataName label={false}/>
+                <DropsComponents.MetadataName label={false} />
               </div>
               <Modal
                 modalName={`${collectionData?.address}${collectionData?.symbol}`}
                 trigger={
-                  <div className="relative hidden h-6 w-6 cursor-pointer md:block">
+                  <div className="relative z-50  h-6 w-6 cursor-pointer sm:block">
                     <Image
                       src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
                       alt="More details"
