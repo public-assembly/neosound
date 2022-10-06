@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { DropsComponents } from '@public-assembly/erc721-drops-minter'
 import { useDropsContractProvider } from '@public-assembly/zora-drops-utils'
@@ -5,6 +6,7 @@ import { usePlaylistProvider } from '@/context/PlaylistProvider'
 import { useHover } from '@/hooks/useHover'
 import { Modal } from '../modal/Modal'
 import { AudioMint } from './AudioMint'
+import useWindowSize from '@/hooks/useWindowSize'
 
 export function PlayIconRow() {
   return (
@@ -22,10 +24,18 @@ export function PlayIconRow() {
 }
 
 export function AudioThumbnail() {
-  const { gridLayout, setTrack } = usePlaylistProvider()
+  const { gridLayout, setTrack, toggleLayout } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
+  const { width } = useWindowSize()
   console.log(collectionData)
+
+  useEffect(() => {
+    if (width < 768 && !gridLayout) {
+      toggleLayout()
+    }
+  }, [width, gridLayout])
+
   return (
     <div
       className={`neosound__playlist--item ${
@@ -42,29 +52,29 @@ export function AudioThumbnail() {
         </button>
       </div>
       {gridLayout && (
-        <div className="absolute inset-0 z-10 flex flex-col justify-between bg-[rgba(0,0,0,0.4)] p-6 font-semibold text-stone-300 opacity-0 duration-300 hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex flex-col justify-between bg-[rgba(0,0,0,0.4)] p-6 font-semibold text-stone-300 duration-300 hover:opacity-100 md:opacity-0">
           <div className="h-full">
             <div className="mb-4 text-xs font-thin uppercase sm:text-sm">
               Curated by: DYNAMIC{' '}
             </div>
-            <div className="title flex flex-row">
-              <DropsComponents.MetadataCreator />
-              <DropsComponents.MetadataName />
+            <div className="neosound__playlist--item__title">
+              <DropsComponents.MetadataName label={false} />
+            </div>
+            <div className="neosound__playlist--item__artist">
+              <DropsComponents.MetadataCreator label={false} />
             </div>
             <Modal
               modalName={`${collectionData?.address}${collectionData?.symbol}`}
               trigger={
                 <div className="relative z-50 mt-4 h-6 w-6 cursor-pointer sm:block">
-                  {isHovered && (
-                    <Image
-                      src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
-                      alt="More details"
-                      layout="responsive"
-                      width={24}
-                      height={24}
-                      objectFit="cover"
-                    />
-                  )}
+                  <Image
+                    src={'/neosound-icons/UI/moreDetails/moreDetails-default.svg'}
+                    alt="More details"
+                    layout="responsive"
+                    width={24}
+                    height={24}
+                    objectFit="cover"
+                  />
                 </div>
               }
               content={<AudioMint />}
@@ -84,7 +94,7 @@ export function AudioThumbnail() {
           </div>
         </div>
       )}
-      <div className=" flex w-full flex-col justify-between px-0 md:flex-row md:items-center md:pr-6">
+      <div className="flex  w-full flex-col justify-between px-0 md:flex-row md:items-center md:pr-6">
         <div className="flex items-center gap-4">
           {!gridLayout && (
             <>
@@ -92,7 +102,9 @@ export function AudioThumbnail() {
                 className={`neosound__playlist--row-title flex flex-row items-center justify-between`}>
                 <DropsComponents.MetadataCreator label={false} />
                 <span>&nbsp;-&nbsp;</span>
-                <DropsComponents.MetadataName label={false} />
+                <div className="neosound__playlist--item-title__list">
+                  <DropsComponents.MetadataName label={false} />
+                </div>
               </div>
               <Modal
                 modalName={`${collectionData?.address}${collectionData?.symbol}`}
@@ -114,8 +126,8 @@ export function AudioThumbnail() {
           )}
         </div>
         {!gridLayout && (
-          <div className="text-xs font-thin uppercase  sm:text-sm">
-            Curated by: DYNAMIC{' '}
+          <div className="items center flex  text-xs font-thin uppercase sm:text-sm">
+            Curated by: <span className="text-bold ">DYNAMIC</span>
           </div>
         )}
       </div>
