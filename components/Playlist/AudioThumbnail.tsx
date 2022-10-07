@@ -28,7 +28,6 @@ export function AudioThumbnail() {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
   const { width } = useWindowSize()
-  console.log(collectionData)
 
   useEffect(() => {
     if (width < 768 && !gridLayout) {

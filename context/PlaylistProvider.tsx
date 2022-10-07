@@ -43,7 +43,6 @@ export function PlaylistProvider({
   const [trackThumbnail, setTrackThumbnail] = useState('')
 
   const toggleLayout = useCallback(() => {
-    console.log('gird', gridLayout)
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
 

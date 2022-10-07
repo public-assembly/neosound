@@ -11,7 +11,7 @@ function NetLabel({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
       <PlaylistProvider
-        curationContractAddress="0xe61787247Dac262c4394b457c958C69BA7080501"
+        curationContractAddress="0xEd824d01B337Fb423554185464dbF7D85034446B"
         networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}>
         <Header />
         <main className="relative z-10">

@@ -11,7 +11,6 @@ export function useModal() {
 
   const requestOpen = useCallback(
     async (nextModalType: ModalType) => {
-      console.log(modalType)
       if (nextModalType === modalType) {
         return
       }
