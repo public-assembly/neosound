@@ -10,13 +10,30 @@ export type PlaylistProps = {
   networkId?: '1' | '5'
 }
 
+export type CurationTargetTypes =
+  | 'CURATION_TYPE_GENERIC'
+  | 'CURATION_TYPE_NFT_CONTRACT'
+  | 'CURATION_TYPE_CURATION_CONTRACT'
+  | 'CURATION_TYPE_CONTRACT'
+  | 'CURATION_TYPE_NFT_ITEM'
+  | 'CURATION_TYPE_EOA_WALLET'
+
+export type PlayListReturn = {
+  curatedContract?: string
+  curationTargetType?: CurationTargetTypes
+  hasTokenId?: boolean
+  tokenId?: string
+  curator?: string
+  sortOrder?: number
+}
+
 export type PlaylistReturnTypes = {
   toggleLayout?: () => void
   setTrack?: (track?: any) => void
   trackIndex?: number
   trackThumbnail?: string
   gridLayout?: boolean
-  curationPlaylist?: any
+  playList?: PlayListReturn[]
   playListContracts?: string[]
   networkId?: '1' | '5'
   curationContractAddress?: string
@@ -54,7 +71,7 @@ export function PlaylistProvider({
     curationContractAddress,
   })
 
-  const santizedPlaylist = useMemo(() => {
+  const playList = useMemo(() => {
     const curationTargetTypes = {
       '0': 'CURATION_TYPE_GENERIC',
       '1': 'CURATION_TYPE_NFT_CONTRACT',
@@ -68,7 +85,7 @@ export function PlaylistProvider({
       return curationTargetTypes[key]
     }
     if (playlistData) {
-      return playlistData.map((entry) => {
+      const allData = playlistData.map((entry) => {
         try {
           return {
             curatedContract: entry['curatedContract'],
@@ -84,15 +101,22 @@ export function PlaylistProvider({
           console.error(err)
         }
       })
+      const removeZeroAddress = allData.filter(
+        (item) =>
+          item?.curatedContract !== '0x0000000000000000000000000000000000000000' &&
+          item?.curator !== '0x0000000000000000000000000000000000000000'
+      )
+      const uniqeListings = [...new Set(removeZeroAddress)]
+      return uniqeListings as PlayListReturn[]
     } else {
       return []
     }
   }, [playlistData])
 
   const playListContracts = useMemo(() => {
-    if (santizedPlaylist.length) {
+    if (playList.length) {
       try {
-        const contracts = santizedPlaylist.map((item: any) =>
+        const contracts = playList.map((item: any) =>
           item?.curatedContract?.toLowerCase()
         )
         return contracts
@@ -102,7 +126,7 @@ export function PlaylistProvider({
     } else {
       return []
     }
-  }, [santizedPlaylist])
+  }, [playList])
 
   const setTrack = useCallback(
     (track: any) => {
@@ -120,7 +144,7 @@ export function PlaylistProvider({
       value={{
         toggleLayout,
         gridLayout,
-        curationPlaylist: santizedPlaylist,
+        playList,
         playListContracts,
         networkId: networkId || '1',
         trackIndex,
