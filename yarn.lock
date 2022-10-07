@@ -931,6 +931,11 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.9.tgz#76dc34de2078a49ffa330d3e05d1aeddc60f32c8"
   integrity sha512-ES62C0OQBoM9KcjtPlwTMQqMVtGAyLZXuaQMdKH7ysl9RLa5Fyp5llxGXnX1bffxlkVtIfFEfznUXz5CJGVmnw==
 
+"@public-assembly/curation-interactions@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@public-assembly/curation-interactions/-/curation-interactions-0.0.9.tgz#29075832d25b9e59360f817e2e67f8094096f973"
+  integrity sha512-OuvcV6UhbYU+8VxseGh6+4kYGyCncWsVGOJF/OVTRvZE0tvhgNG9B7u/iCz1AtMXkA6mLE9HdVAaf05nl5uQoA==
+
 "@public-assembly/erc721-drops-minter@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.5.tgz#8db436b81eb0367af15be662235096e20141c4e9"

@@ -1,10 +1,13 @@
-import { CurationInterface } from '@public-assembly/assemble-curation-interface'
+// import { CurationInterface } from '@public-assembly/assemble-curation-interface'
+import { CurationInterface } from '@public-assembly/curation-interactions'
 import { usePlaylistProvider } from '../context'
 import { useAuth } from '../hooks'
 import { Modal } from '@/components/modal/Modal'
 import { useModal } from '@/hooks/useModal'
 import { isClientSide } from '@/utils/window'
 import { AuthCheck } from './auth'
+import { Connect } from './auth/Connect'
+// import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
   const { curationContractAddress } = usePlaylistProvider()
@@ -18,8 +21,6 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
         <AuthCheck
           formUI={
             <CurationInterface
-              connectionStatus={isConnected}
-              userAddress={address}
               curationContractAddress={curationContractAddress}
               network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
               closeButton={
@@ -27,6 +28,7 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
                   Close
                 </button>
               }
+              connectButton={<Connect />}
             />
           }
         />
