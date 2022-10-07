@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react'
 import { useCurationFunctions } from '@public-assembly/assemble-curation-functions'
 import { addIPFSGateway } from '@public-assembly/zora-drops-utils'
 import { useMemo } from 'react'
+import { AddressZero } from '@ethersproject/constants'
 
 export type PlaylistProps = {
   children?: ReactNode
@@ -63,11 +64,7 @@ export function PlaylistProvider({
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
 
-  const {
-    getListingsRead: playlistData,
-    // getListingsError,
-    // getListingsLoading,
-  } = useCurationFunctions({
+  const { getListingsRead: playlistData } = useCurationFunctions({
     curationContractAddress,
   })
 
@@ -84,11 +81,12 @@ export function PlaylistProvider({
     function returnCurationType(key: keyof typeof curationTargetTypes) {
       return curationTargetTypes[key]
     }
+
     if (playlistData) {
       const allData = playlistData.map((entry) => {
         try {
           return {
-            curatedContract: entry['curatedContract'],
+            curatedContract: entry['curatedContract']?.toLowerCase(),
             curationTargetType: returnCurationType(
               entry['curationTargetType'].toString()
             ),
@@ -101,13 +99,16 @@ export function PlaylistProvider({
           console.error(err)
         }
       })
-      const removeZeroAddress = allData.filter(
-        (item) =>
-          item?.curatedContract !== '0x0000000000000000000000000000000000000000' &&
-          item?.curator !== '0x0000000000000000000000000000000000000000'
-      )
-      const uniqeListings = [...new Set(removeZeroAddress)]
-      return uniqeListings as PlayListReturn[]
+      try {
+        const removeZeroAddress = allData.filter(
+          (item) => item?.curatedContract !== AddressZero && item?.curator !== AddressZero
+        )
+        const uniqeListings = [...new Set(removeZeroAddress)]
+        return uniqeListings as PlayListReturn[]
+      } catch (err) {
+        console.error(err)
+        return []
+      }
     } else {
       return []
     }
@@ -142,15 +143,17 @@ export function PlaylistProvider({
   return (
     <PlaylistContext.Provider
       value={{
+        /* Layout */
         toggleLayout,
         gridLayout,
+        /* Data */
+        curationContractAddress,
         playList,
         playListContracts,
         networkId: networkId || '1',
         trackIndex,
         setTrack,
         trackThumbnail,
-        curationContractAddress,
       }}>
       {children}
     </PlaylistContext.Provider>
