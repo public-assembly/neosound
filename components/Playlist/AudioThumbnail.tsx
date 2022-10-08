@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { DropsComponents } from '@public-assembly/erc721-drops-minter'
 import { useDropsContractProvider } from '@public-assembly/zora-drops-utils'
-import { usePlaylistProvider } from '@/context/PlaylistProvider'
+import { usePlaylistProvider, PlayListReturn } from '@/context/PlaylistProvider'
 import { useHover } from '@/hooks/useHover'
+import { useEnsName } from 'wagmi'
+import { shortenAddress } from '@/utils/shortenAddress'
 import { Modal } from '../modal/Modal'
 import { AudioMint } from './AudioMint'
 import useWindowSize from '@/hooks/useWindowSize'
@@ -23,18 +25,27 @@ export function PlayIconRow() {
   )
 }
 
-export function AudioThumbnail() {
+export function AudioThumbnail({ playListItem }: { playListItem?: PlayListReturn }) {
   const { gridLayout, setTrack, toggleLayout } = usePlaylistProvider()
   const [hoverRef, isHovered] = useHover<HTMLDivElement>()
   const { collectionData } = useDropsContractProvider()
   const { width } = useWindowSize()
-  console.log(collectionData)
 
   useEffect(() => {
     if (width < 768 && !gridLayout) {
       toggleLayout()
     }
   }, [width, gridLayout])
+
+  const { data: ensName } = useEnsName({ address: playListItem?.curator })
+
+  const curatorName = useMemo(() => {
+    if (ensName) {
+      return ensName
+    } else {
+      return shortenAddress(playListItem?.curator)
+    }
+  }, [ensName, playListItem?.curator])
 
   return (
     <div
@@ -127,7 +138,7 @@ export function AudioThumbnail() {
         </div>
         {!gridLayout && (
           <div className="items center flex  text-xs font-thin uppercase sm:text-sm">
-            Curated by: <span className="text-bold ">DYNAMIC</span>
+            Curated by: <span className="text-bold ">{curatorName}</span>
           </div>
         )}
       </div>

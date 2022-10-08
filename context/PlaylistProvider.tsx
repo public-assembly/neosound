@@ -3,11 +3,29 @@ import { createContext, useContext } from 'react'
 import { useCurationFunctions } from '@public-assembly/assemble-curation-functions'
 import { addIPFSGateway } from '@public-assembly/zora-drops-utils'
 import { useMemo } from 'react'
+import { AddressZero } from '@ethersproject/constants'
 
 export type PlaylistProps = {
   children?: ReactNode
   curationContractAddress?: string
   networkId?: '1' | '5'
+}
+
+export type CurationTargetTypes =
+  | 'CURATION_TYPE_GENERIC'
+  | 'CURATION_TYPE_NFT_CONTRACT'
+  | 'CURATION_TYPE_CURATION_CONTRACT'
+  | 'CURATION_TYPE_CONTRACT'
+  | 'CURATION_TYPE_NFT_ITEM'
+  | 'CURATION_TYPE_EOA_WALLET'
+
+export type PlayListReturn = {
+  curatedContract?: string
+  curationTargetType?: CurationTargetTypes
+  hasTokenId?: boolean
+  tokenId?: string
+  curator?: string
+  sortOrder?: number
 }
 
 export type PlaylistReturnTypes = {
@@ -16,7 +34,7 @@ export type PlaylistReturnTypes = {
   trackIndex?: number
   trackThumbnail?: string
   gridLayout?: boolean
-  curationPlaylist?: any
+  playList?: PlayListReturn[]
   playListContracts?: string[]
   networkId?: '1' | '5'
   curationContractAddress?: string
@@ -43,19 +61,14 @@ export function PlaylistProvider({
   const [trackThumbnail, setTrackThumbnail] = useState('')
 
   const toggleLayout = useCallback(() => {
-    console.log('gird', gridLayout)
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
 
-  const {
-    getListingsRead: playlistData,
-    // getListingsError,
-    // getListingsLoading,
-  } = useCurationFunctions({
+  const { getListingsRead: playlistData } = useCurationFunctions({
     curationContractAddress,
   })
 
-  const santizedPlaylist = useMemo(() => {
+  const playList = useMemo(() => {
     const curationTargetTypes = {
       '0': 'CURATION_TYPE_GENERIC',
       '1': 'CURATION_TYPE_NFT_CONTRACT',
@@ -68,11 +81,12 @@ export function PlaylistProvider({
     function returnCurationType(key: keyof typeof curationTargetTypes) {
       return curationTargetTypes[key]
     }
+
     if (playlistData) {
-      return playlistData.map((entry) => {
+      const allData = playlistData.map((entry) => {
         try {
           return {
-            curatedContract: entry['curatedContract'],
+            curatedContract: entry['curatedContract']?.toLowerCase(),
             curationTargetType: returnCurationType(
               entry['curationTargetType'].toString()
             ),
@@ -85,15 +99,25 @@ export function PlaylistProvider({
           console.error(err)
         }
       })
+      try {
+        const removeZeroAddress = allData.filter(
+          (item) => item?.curatedContract !== AddressZero && item?.curator !== AddressZero
+        )
+        const uniqeListings = [...new Set(removeZeroAddress)]
+        return uniqeListings as PlayListReturn[]
+      } catch (err) {
+        console.error(err)
+        return []
+      }
     } else {
       return []
     }
   }, [playlistData])
 
   const playListContracts = useMemo(() => {
-    if (santizedPlaylist.length) {
+    if (playList.length) {
       try {
-        const contracts = santizedPlaylist.map((item: any) =>
+        const contracts = playList.map((item: any) =>
           item?.curatedContract?.toLowerCase()
         )
         return contracts
@@ -103,7 +127,7 @@ export function PlaylistProvider({
     } else {
       return []
     }
-  }, [santizedPlaylist])
+  }, [playList])
 
   const setTrack = useCallback(
     (track: any) => {
@@ -119,15 +143,17 @@ export function PlaylistProvider({
   return (
     <PlaylistContext.Provider
       value={{
+        /* Layout */
         toggleLayout,
         gridLayout,
-        curationPlaylist: santizedPlaylist,
+        /* Data */
+        curationContractAddress,
+        playList,
         playListContracts,
         networkId: networkId || '1',
         trackIndex,
         setTrack,
         trackThumbnail,
-        curationContractAddress,
       }}>
       {children}
     </PlaylistContext.Provider>
