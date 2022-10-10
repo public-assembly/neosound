@@ -18,6 +18,7 @@
     "@public-assembly/assemble-curation-interface": "^0.0.5",
     "@public-assembly/assemble-curation-validation": "^0.0.3",
     "@public-assembly/audio-player-ui": "^0.0.9",
+    "@public-assembly/curation-interactions": "^0.0.11",
     "@public-assembly/erc721-drops-minter": "^0.0.5",
     "@public-assembly/zora-drops-utils": "^0.1.0",
     "@rainbow-me/rainbowkit": "^0.5.0",
