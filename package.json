@@ -14,7 +14,7 @@
     "@fontsource/barlow": "^4.5.9",
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/inter": "^4.5.12",
-    "@public-assembly/audio-player-ui": "^0.0.9",
+    "@public-assembly/audio-player-ui": "^0.1.0",
     "@public-assembly/curation-interactions": "^0.0.15",
     "@public-assembly/erc721-drops-minter": "^0.0.5",
     "@public-assembly/zora-drops-utils": "^0.1.0",
