@@ -14,12 +14,11 @@ export type PlaylistProps = {
 export type CurationTargetTypes =
   | 'CURATION_TYPE_GENERIC'
   | 'CURATION_TYPE_NFT_CONTRACT'
-  | 'CURATION_TYPE_CONTRACT' 
+  | 'CURATION_TYPE_CONTRACT'
   | 'CURATION_TYPE_CURATION_CONTRACT'
   | 'CURATION_TYPE_NFT_ITEM'
   | 'CURATION_TYPE_WALLET'
   | 'CURATION_TYPE_ZORA_EDITION'
-  
 
 export type PlayListReturn = {
   curatedAddress?: string
@@ -69,7 +68,7 @@ export function PlaylistProvider({
 
   const { getListingsReturn: playlistData } = useCurationFunctions({
     curationContractAddress,
-  })  
+  })
 
   const playList = useMemo(() => {
     const curationTargetTypes = {
@@ -122,9 +121,7 @@ export function PlaylistProvider({
   const playListContracts = useMemo(() => {
     if (playList.length) {
       try {
-        const contracts = playList.map((item: any) =>
-          item?.curatedAddress?.toLowerCase()
-        )
+        const contracts = playList.map((item: any) => item?.curatedAddress?.toLowerCase())
         return contracts
       } catch (err) {
         console.error(err)

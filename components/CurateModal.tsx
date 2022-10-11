@@ -10,7 +10,6 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
   if (!isClientSide) return null
   return (
     <>
-      
       <Modal
         modalName="curation-interface"
         content={
@@ -22,7 +21,7 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
                 closeButton={
                   <button onClick={requestClose} className="justify-end">
                     Close
-                  </button>        
+                  </button>
                 }
                 connectButton={<Connect />}
               />
