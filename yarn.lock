@@ -921,10 +921,10 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/curation-interactions/-/curation-interactions-0.0.15.tgz#2ba0d9c84e67476121f57957209cd034f670bf99"
   integrity sha512-5rECeqYhHg37NsGZv0W3xXjm+yeUx225ITWKyTgQOVw7XAQggOA1DBQZQcdQckKMSDoh1niHXDRtpTpkS3+K/g==
 
-"@public-assembly/erc721-drops-minter@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.5.tgz#8db436b81eb0367af15be662235096e20141c4e9"
-  integrity sha512-cV5U4AI0WK1HZ/gcMWUoWxBZxw0K5kxam4OGBrZ14c8qmNEEUCCpLmOzEd3R9LtaYMHc7ejCBoEa8Fkusjtu7Q==
+"@public-assembly/erc721-drops-minter@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@public-assembly/erc721-drops-minter/-/erc721-drops-minter-0.0.7.tgz#92c27e119e7c934570b69f7ada983d19719479d5"
+  integrity sha512-sIZBvnpPKOuu1aWBWn5tw3Hqrh0j8/UDNJY7VeAEAOEfxQIkhm5G8Hm4oRFuHIS6RmNxU97icCi/c1CCknNIhg==
   dependencies:
     "@public-assembly/zora-drops-utils" "^0.1.0"
 

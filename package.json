@@ -16,7 +16,7 @@
     "@fontsource/inter": "^4.5.12",
     "@public-assembly/audio-player-ui": "^0.1.0",
     "@public-assembly/curation-interactions": "^0.0.15",
-    "@public-assembly/erc721-drops-minter": "^0.0.5",
+    "@public-assembly/erc721-drops-minter": "^0.0.7",
     "@public-assembly/zora-drops-utils": "^0.1.0",
     "@rainbow-me/rainbowkit": "^0.5.0",
     "@zoralabs/nft-drop-contracts": "^1.0.1",

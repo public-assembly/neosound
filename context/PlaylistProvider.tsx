@@ -108,6 +108,8 @@ export function PlaylistProvider({
           (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
         )
         const uniqeListings = [...new Set(removeZeroAddress)]
+
+        console.log(uniqeListings)
         return uniqeListings as PlayListReturn[]
       } catch (err) {
         console.error(err)
