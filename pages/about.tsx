@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { Seo } from '@/components/Seo'
 
 const About: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>About</title>
-        <meta name="description" content="About Neosound" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo
+        title="About"
+        description="This site offers a new way to listen, share, and publish music on the internet."
+      />
       <div className=" flex flex-col items-start justify-between gap-4 whitespace-pre-wrap px-6 text-stone-200 sm:px-12 md:max-w-4xl">
         <h1 className="my-4 text-3xl font-light text-stone-300">Neosound</h1>
         <h1 className="text-[18px] font-light text-stone-300">
