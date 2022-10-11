@@ -4,6 +4,7 @@ import { useCurationFunctions } from '@public-assembly/curation-interactions'
 import { addIPFSGateway } from '@public-assembly/zora-drops-utils'
 import { useMemo } from 'react'
 import { AddressZero } from '@ethersproject/constants'
+import { shuffle } from 'lodash'
 
 export type PlaylistProps = {
   children?: ReactNode
@@ -95,8 +96,8 @@ export function PlaylistProvider({
     }
 
     if (playlistData) {
-      const allData = playlistData.map((entry) => {
-        // console.log(entry)
+      const shuffledPlaylistData = shuffle(playlistData)
+      const allData = shuffledPlaylistData.map((entry) => {
         try {
           return {
             curatedAddress: entry['curatedAddress']?.toLowerCase(),
