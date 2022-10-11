@@ -13,9 +13,10 @@ export function AudioGrid() {
           gridLayout ? 'neosound__playlist--grid-view' : 'neosound__playlist--list-view'
         }`}>
         {playList.map((playListItem) => (
+          
           <DropsContractProvider
-            key={`${playListItem?.curatedContract}${playListItem?.curator}`}
-            collectionAddress={playListItem?.curatedContract}
+            key={`${playListItem?.curatedAddress}${playListItem?.curator}`}      
+            collectionAddress={playListItem?.curatedAddress}
             networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}>
             <AudioThumbnail playListItem={playListItem} />
           </DropsContractProvider>

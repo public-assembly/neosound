@@ -1,6 +1,6 @@
 import { ReactNode, useState, useCallback } from 'react'
 import { createContext, useContext } from 'react'
-import { useCurationFunctions } from '@public-assembly/assemble-curation-functions'
+import { useCurationFunctions } from '@public-assembly/curation-interactions'
 import { addIPFSGateway } from '@public-assembly/zora-drops-utils'
 import { useMemo } from 'react'
 import { AddressZero } from '@ethersproject/constants'
@@ -14,18 +14,21 @@ export type PlaylistProps = {
 export type CurationTargetTypes =
   | 'CURATION_TYPE_GENERIC'
   | 'CURATION_TYPE_NFT_CONTRACT'
+  | 'CURATION_TYPE_CONTRACT' 
   | 'CURATION_TYPE_CURATION_CONTRACT'
-  | 'CURATION_TYPE_CONTRACT'
   | 'CURATION_TYPE_NFT_ITEM'
-  | 'CURATION_TYPE_EOA_WALLET'
+  | 'CURATION_TYPE_WALLET'
+  | 'CURATION_TYPE_ZORA_EDITION'
+  
 
 export type PlayListReturn = {
-  curatedContract?: string
+  curatedAddress?: string
   curationTargetType?: CurationTargetTypes
   hasTokenId?: boolean
   tokenId?: string
   curator?: string
   sortOrder?: number
+  chainId?: number
 }
 
 export type PlaylistReturnTypes = {
@@ -64,18 +67,19 @@ export function PlaylistProvider({
     setGridLayout(!gridLayout)
   }, [gridLayout, setGridLayout])
 
-  const { getListingsRead: playlistData } = useCurationFunctions({
+  const { getListingsReturn: playlistData } = useCurationFunctions({
     curationContractAddress,
-  })
+  })  
 
   const playList = useMemo(() => {
     const curationTargetTypes = {
       '0': 'CURATION_TYPE_GENERIC',
       '1': 'CURATION_TYPE_NFT_CONTRACT',
-      '2': 'CURATION_TYPE_CURATION_CONTRACT',
-      '3': 'CURATION_TYPE_CONTRACT',
+      '2': 'CURATION_TYPE_CONTRACT',
+      '3': 'CURATION_TYPE_CURATION_CONTRACT',
       '4': 'CURATION_TYPE_NFT_ITEM',
-      '5': 'CURATION_TYPE_EOA_WALLET',
+      '5': 'CURATION_TYPE_WALLET',
+      '6': 'CURATION_TYPE_ZORA_EDITION',
     }
 
     function returnCurationType(key: keyof typeof curationTargetTypes) {
@@ -86,7 +90,7 @@ export function PlaylistProvider({
       const allData = playlistData.map((entry) => {
         try {
           return {
-            curatedContract: entry['curatedContract']?.toLowerCase(),
+            curatedAddress: entry['curatedAddress']?.toLowerCase(),
             curationTargetType: returnCurationType(
               entry['curationTargetType'].toString()
             ),
@@ -94,6 +98,7 @@ export function PlaylistProvider({
             tokenId: entry['tokenId']?.toString(),
             curator: entry['curator'],
             sortOrder: entry['sortOrder'],
+            chainId: entry['chainId']?.toString(),
           }
         } catch (err) {
           console.error(err)
@@ -101,7 +106,7 @@ export function PlaylistProvider({
       })
       try {
         const removeZeroAddress = allData.filter(
-          (item) => item?.curatedContract !== AddressZero && item?.curator !== AddressZero
+          (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
         )
         const uniqeListings = [...new Set(removeZeroAddress)]
         return uniqeListings as PlayListReturn[]
@@ -118,7 +123,7 @@ export function PlaylistProvider({
     if (playList.length) {
       try {
         const contracts = playList.map((item: any) =>
-          item?.curatedContract?.toLowerCase()
+          item?.curatedAddress?.toLowerCase()
         )
         return contracts
       } catch (err) {
