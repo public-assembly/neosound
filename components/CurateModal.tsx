@@ -10,16 +10,18 @@ export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
       <Modal
         modalName="curation-interface"
         content={
-          <CurationInterface
-            curationContractAddress={process.env.NEXT_PUBLIC_CURATION_CONTRACT}
-            network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
-            closeButton={
-              <button onClick={requestClose} className="justify-end">
-                Close
-              </button>
-            }
-            connectButton={<Connect />}
-          />
+          <div className="curation-interface">
+            <CurationInterface
+              curationContractAddress={process.env.NEXT_PUBLIC_CURATION_CONTRACT}
+              network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
+              closeButton={
+                <button onClick={requestClose} className="justify-end">
+                  Close
+                </button>
+              }
+              connectButton={<Connect />}
+            />
+          </div>
         }
         trigger={trigger}
       />

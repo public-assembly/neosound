@@ -916,10 +916,10 @@
   resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.1.0.tgz#15e1e0b863ec8612a3ec2b3acd73ad54dcec0d80"
   integrity sha512-J9QtfqjhobBcUlV6yu2AGpfTNF1TeTkLzJUhBbr/pqqY/OcTr9Zavx1NRM4og/exjkBMzMSHnESmLzvv58vWdg==
 
-"@public-assembly/curation-interactions@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@public-assembly/curation-interactions/-/curation-interactions-0.0.16.tgz#0ac601d88925c248f81e47c39118ec4e5c648148"
-  integrity sha512-AQqPzNB8wSwOiQII50TACv6hIPAQqHwVZEBy3B1+4uV2FT2KVYCjoqjK7HJf1HMgWUUPCHyHYnDHYpSod7YPuQ==
+"@public-assembly/curation-interactions@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@public-assembly/curation-interactions/-/curation-interactions-0.0.17.tgz#820efea9980d8fd932ef1e3728f5f13c5f8fd938"
+  integrity sha512-rqV0dFYrrUpXCyTienkx5ojbqmEwNDYROz6/3yjJqmiobdMSjySwGa7Is0l0FRc1VWF2L8mU8IK4Bg9/LMhtWA==
 
 "@public-assembly/erc721-drops-minter@^0.0.8":
   version "0.0.8"

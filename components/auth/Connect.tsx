@@ -9,7 +9,7 @@ export function Connect() {
           return (
             <button
               onClick={openConnectModal}
-              className="ns-textLight flex items-center border border-white px-4 py-1  hover:text-white">
+              className="flex items-center border-[1px] border-black px-4 py-1 text-black">
               Connect Wallet
             </button>
           )
