@@ -53,11 +53,20 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
+function removeDuplicates(array: any, key: any) {
+  return [
+    ...new Map(
+      /* @ts-ignore */
+      array.map((x) => [key(x), x])
+    ).values(),
+  ]
+}
+
 export function PlaylistProvider({
   children,
   curationContractAddress,
   networkId,
-}: PlaylistProps) {
+}: PlaylistProps): JSX.Element {
   const [gridLayout, setGridLayout] = useState(false)
   const [trackIndex, setTrackIndex] = useState(0)
   const [trackThumbnail, setTrackThumbnail] = useState('')
@@ -87,7 +96,7 @@ export function PlaylistProvider({
 
     if (playlistData) {
       const allData = playlistData.map((entry) => {
-        console.log(entry)
+        // console.log(entry)
         try {
           return {
             curatedAddress: entry['curatedAddress']?.toLowerCase(),
@@ -108,11 +117,10 @@ export function PlaylistProvider({
         const removeZeroAddress = allData.filter(
           (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
         )
-        // removeZeroAddress.filter((v, i, a) => a.findIndex(v2=>(v2.curatedAddress === v.curatedAddress)) === i)
-
-        const uniqeListings = [...new Set(removeZeroAddress)]
-        // const unique = [...new Map(uniqeListings.map((item, key) => [item.curatedAddress[key], item])).values()]
-        // console.log(unique)
+        const uniqeListings = removeDuplicates(
+          removeZeroAddress,
+          (item: any) => item.curatedAddress
+        )
         return uniqeListings as PlayListReturn[]
       } catch (err) {
         console.error(err)
