@@ -911,21 +911,6 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
-"@public-assembly/assemble-curation-functions@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-functions/-/assemble-curation-functions-0.0.8.tgz#70b52cb80cf94c7683c0b7a832cc37263d21788e"
-  integrity sha512-EN/rZMttJcnZ12FneVFCrQTPIEG0aX+kmFOcJi+6UmENZXAcMEIOtBbCXgUsLe43mdCiG0P6cCXEYyswLL5ryQ==
-
-"@public-assembly/assemble-curation-interface@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-interface/-/assemble-curation-interface-0.0.5.tgz#aa69f4c1b012f8a0aef738f0fa4208710806b360"
-  integrity sha512-T+3ffGpYnVB+9RqrSWXgoR8fQ4c05PlkG0ra8xDf34d7x1BWeIV3KJkDPwywXnZbMOlcmZyrtvzgqHHQG4etjg==
-
-"@public-assembly/assemble-curation-validation@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@public-assembly/assemble-curation-validation/-/assemble-curation-validation-0.0.3.tgz#4b49b3d1de655ba4b5366747d176666d555262b1"
-  integrity sha512-82sYG7jEnBGKFGTTej76B41FL2BKqntPk9CsrOPUtAnNSARgrTNoFNeB3LzetiMYKQZvU15PRNVEZKGNwjMdBg==
-
 "@public-assembly/audio-player-ui@^0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.0.9.tgz#76dc34de2078a49ffa330d3e05d1aeddc60f32c8"
