@@ -1,5 +1,12 @@
-import { DisconnectButton } from './auth'
-import { Nav } from './Nav'
+import dynamic from 'next/dynamic'
+
+const DisconnectButton = dynamic(() => import('./auth/DisconnectButton'), {
+  ssr: false,
+})
+
+const Nav = dynamic(() => import('./Nav'), {
+  ssr: false,
+})
 
 export function Header() {
   return (

@@ -13,7 +13,7 @@ function NetLabel({ Component, pageProps }: AppProps) {
       <PlaylistProvider
         curationContractAddress={process.env.NEXT_PUBLIC_CURATION_CONTRACT}
         networkId={process.env.NEXT_PUBLIC_CHAIN_ID as '1' | '5'}>
-        {/*<Header />*/}
+        <Header />
         <main className="relative z-10">
           <Component {...pageProps} />
           <AudioPlayer />

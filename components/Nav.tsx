@@ -23,7 +23,7 @@ const pages = [
   },
 ]
 
-export function Nav(): JSX.Element {
+export default function Nav(): JSX.Element {
   const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
