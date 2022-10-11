@@ -8,7 +8,7 @@ const Curate: NextPage = () => {
   return (
     <>
       <Seo title="Curate" description="Curate Neosound" />
-      <div className="bg-[#ff89de]">
+      <div className="curation-interface bg-[#ff89de]">
         <CurationInterface
           curationContractAddress={process.env.NEXT_PUBLIC_CURATION_CONTRACT}
           network={Number(process.env.NEXT_PUBLIC_CHAIN_ID)}
