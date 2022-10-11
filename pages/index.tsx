@@ -1,15 +1,17 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { AudioGrid, GridToggle } from '@/components/Playlist'
+import React from 'react'
+import { Seo } from '@/components/Seo'
+import dynamic from 'next/dynamic'
+import { GridToggle } from '@/components/Playlist'
+
+const AudioGrid = dynamic(() => import('./../components/Playlist/AudioGrid'), {
+  ssr: false,
+})
 
 const Home: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>Neosound</title>
-        <meta name="description" content="Neosound" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo />
       <GridToggle />
       <AudioGrid />
     </>

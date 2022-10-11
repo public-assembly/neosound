@@ -47,6 +47,8 @@ export function AudioThumbnail({ playListItem }: { playListItem?: PlayListReturn
     }
   }, [ensName, playListItem?.curator])
 
+  if (!collectionData) return null
+
   return (
     <div
       className={`neosound__playlist--item ${
@@ -66,7 +68,7 @@ export function AudioThumbnail({ playListItem }: { playListItem?: PlayListReturn
         <div className="absolute inset-0 z-10 flex flex-col justify-between bg-[rgba(0,0,0,0.4)] p-6 font-semibold text-stone-300 duration-300 hover:opacity-100 md:opacity-0">
           <div className="h-full">
             <div className="mb-4 text-xs font-thin uppercase sm:text-sm">
-              Curated by: DYNAMIC{' '}
+              Curated by: {curatorName}
             </div>
             <div className="neosound__playlist--item__title">
               <DropsComponents.MetadataName label={false} />

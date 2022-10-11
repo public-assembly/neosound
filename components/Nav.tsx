@@ -8,22 +8,26 @@ const pages = [
   {
     slug: '/',
     title: 'Listen',
+    type: 'internal',
   },
   {
     slug: '/curate',
     title: 'Curate',
+    type: 'internal',
   },
   {
-    slug: '/deploy',
+    slug: 'https://deploy.neosound.xyz/',
     title: 'Deploy',
+    type: 'external',
   },
   {
     slug: '/about',
     title: 'About',
+    type: 'internal',
   },
 ]
 
-export function Nav(): JSX.Element {
+export default function Nav(): JSX.Element {
   const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -40,14 +44,13 @@ export function Nav(): JSX.Element {
           </a>
         </Link>
         <CurateModal trigger={<span className="ns-nav__item">Curate</span>} />
-        <Link passHref href={`/deploy`}>
-          <a
-            className={`${
-              router.asPath === '/deploy' ? 'ns-nav__item_current' : 'ns-nav__item'
-            }`}>
-            Deploy
-          </a>
-        </Link>
+        <a
+          href="https://deploy.neosound.xyz/"
+          target="_blank"
+          rel="noreferrer"
+          className="ns-nav__item">
+          Deploy
+        </a>
         <Link passHref href={`/about`}>
           <a
             className={`${
@@ -69,7 +72,7 @@ export function Nav(): JSX.Element {
       </div>
       {/* MOBILE NAV */}
       {mobileMenuOpen && (
-        <div className="ns-mobile__menu absolute inset-0  z-50 flex h-screen flex-col   justify-center text-6xl font-semibold sm:hidden">
+        <div className="ns-mobile__menu absolute inset-0 z-50 flex h-screen flex-col justify-center pb-24 text-6xl font-semibold sm:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="fixed top-2 left-6">
@@ -81,18 +84,29 @@ export function Nav(): JSX.Element {
             />
           </button>
           {pages.map((page) => (
-            <div key={page.slug} className="flex flex-col gap-y-12">
-              <Link passHref href={page.slug}>
-                <button
-                  className={`${
-                    router.asPath === page.slug
-                      ? 'ns-nav__mobile_item_current'
-                      : 'ns-nav__mobile_item'
-                  } mt-4`}
+            <div className="flex w-full justify-center" key={page.slug}>
+              {page.type === 'internal' ? (
+                <Link passHref href={page.slug}>
+                  <a
+                    className={`py-3 text-center ${
+                      router.asPath === page.slug
+                        ? 'ns-nav__mobile_item_current'
+                        : 'ns-nav__mobile_item'
+                    }`}
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                    {page.title}
+                  </a>
+                </Link>
+              ) : (
+                <a
+                  href={page.slug}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`ns-nav__mobile_item py-3 text-center`}
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                   {page.title}
-                </button>
-              </Link>
+                </a>
+              )}
             </div>
           ))}
         </div>

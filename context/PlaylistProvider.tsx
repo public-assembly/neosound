@@ -15,12 +15,11 @@ export type PlaylistProps = {
 export type CurationTargetTypes =
   | 'CURATION_TYPE_GENERIC'
   | 'CURATION_TYPE_NFT_CONTRACT'
-  | 'CURATION_TYPE_CONTRACT' 
+  | 'CURATION_TYPE_CONTRACT'
   | 'CURATION_TYPE_CURATION_CONTRACT'
   | 'CURATION_TYPE_NFT_ITEM'
   | 'CURATION_TYPE_WALLET'
   | 'CURATION_TYPE_ZORA_EDITION'
-  
 
 export type PlayListReturn = {
   curatedAddress?: string
@@ -55,11 +54,20 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
+function removeDuplicates(array: any, key: any) {
+  return [
+    ...new Map(
+      /* @ts-ignore */
+      array.map((x) => [key(x), x])
+    ).values(),
+  ]
+}
+
 export function PlaylistProvider({
   children,
   curationContractAddress,
   networkId,
-}: PlaylistProps) {
+}: PlaylistProps): JSX.Element {
   const [gridLayout, setGridLayout] = useState(false)
   const [trackIndex, setTrackIndex] = useState(0)
   const [trackThumbnail, setTrackThumbnail] = useState('')
@@ -70,7 +78,7 @@ export function PlaylistProvider({
 
   const { getListingsReturn: playlistData } = useCurationFunctions({
     curationContractAddress,
-  })  
+  })
 
   const playList = useMemo(() => {
     const curationTargetTypes = {
@@ -88,8 +96,8 @@ export function PlaylistProvider({
     }
 
     if (playlistData) {
-      const shuffledPlaylistData = shuffle(playlistData)
-      const allData = shuffledPlaylistData.map((entry) => {
+      const allData = playlistData.map((entry) => {
+        // console.log(entry)
         try {
           return {
             curatedAddress: entry['curatedAddress']?.toLowerCase(),
@@ -110,8 +118,11 @@ export function PlaylistProvider({
         const removeZeroAddress = allData.filter(
           (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
         )
-        const uniqeListings = [...new Set(removeZeroAddress)]
-        return uniqeListings as PlayListReturn[]
+        const uniqeListings = removeDuplicates(
+          removeZeroAddress,
+          (item: any) => item.curatedAddress
+        )
+        return shuffle(uniqeListings) as PlayListReturn[]
       } catch (err) {
         console.error(err)
         return []
@@ -124,9 +135,7 @@ export function PlaylistProvider({
   const playListContracts = useMemo(() => {
     if (playList.length) {
       try {
-        const contracts = playList.map((item: any) =>
-          item?.curatedAddress?.toLowerCase()
-        )
+        const contracts = playList.map((item: any) => item?.curatedAddress?.toLowerCase())
         return contracts
       } catch (err) {
         console.error(err)

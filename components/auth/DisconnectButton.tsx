@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks/useAuth'
 import { isClientSide } from '@/utils/window'
 
-export function DisconnectButton() {
+export default function DisconnectButton() {
   const { logout, isConnected } = useAuth()
   if (!isClientSide || !isConnected) return null
   return (
