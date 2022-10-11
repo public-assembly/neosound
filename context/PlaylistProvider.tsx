@@ -96,8 +96,8 @@ export function PlaylistProvider({
     }
 
     if (playlistData) {
-      const shuffledPlaylistData = shuffle(playlistData)
-      const allData = shuffledPlaylistData.map((entry) => {
+      const allData = playlistData.map((entry) => {
+        // console.log(entry)
         try {
           return {
             curatedAddress: entry['curatedAddress']?.toLowerCase(),
@@ -122,7 +122,7 @@ export function PlaylistProvider({
           removeZeroAddress,
           (item: any) => item.curatedAddress
         )
-        return uniqeListings as PlayListReturn[]
+        return shuffle(uniqeListings) as PlayListReturn[]
       } catch (err) {
         console.error(err)
         return []
