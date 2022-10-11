@@ -1,13 +1,10 @@
 import { CurationInterface } from '@public-assembly/curation-interactions'
+import { Connect } from './auth/Connect'
 import { Modal } from '@/components/modal/Modal'
 import { useModal } from '@/hooks/useModal'
-import { isClientSide } from '@/utils/window'
-import { AuthCheck } from './auth'
-import { Connect } from './auth/Connect'
 
 export function CurateModal({ trigger }: { trigger?: JSX.Element }) {
   const { requestClose } = useModal()
-  if (!isClientSide) return null
   return (
     <>
       <Modal
