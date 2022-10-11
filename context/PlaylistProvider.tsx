@@ -87,6 +87,7 @@ export function PlaylistProvider({
 
     if (playlistData) {
       const allData = playlistData.map((entry) => {
+        console.log(entry)
         try {
           return {
             curatedAddress: entry['curatedAddress']?.toLowerCase(),
@@ -107,9 +108,11 @@ export function PlaylistProvider({
         const removeZeroAddress = allData.filter(
           (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
         )
-        const uniqeListings = [...new Set(removeZeroAddress)]
+        // removeZeroAddress.filter((v, i, a) => a.findIndex(v2=>(v2.curatedAddress === v.curatedAddress)) === i)
 
-        console.log(uniqeListings)
+        const uniqeListings = [...new Set(removeZeroAddress)]
+        // const unique = [...new Map(uniqeListings.map((item, key) => [item.curatedAddress[key], item])).values()]
+        // console.log(unique)
         return uniqeListings as PlayListReturn[]
       } catch (err) {
         console.error(err)

@@ -47,6 +47,8 @@ export function AudioThumbnail({ playListItem }: { playListItem?: PlayListReturn
     }
   }, [ensName, playListItem?.curator])
 
+  if (!collectionData) return null
+
   return (
     <div
       className={`neosound__playlist--item ${

@@ -29,7 +29,10 @@ export function AudioMint() {
             </div>
             <div className="flex flex-col gap-2">
               <DropsComponents.MetadataName label={false} />
-              <DropsComponents.MetadataCreator label="Artist:" />
+              <div>
+                <DropsComponents.MetadataCreator label="Artist:" />
+                <DropsComponents.EtherscanLink truncateAddress label={false} />
+              </div>
             </div>
           </div>
           <AuthCheck
