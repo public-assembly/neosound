@@ -81,3 +81,15 @@
 .ns_views-toggle {
   position: fixed;
 }
+
+.curation-interface {
+  padding: 24px;
+}
+
+.curation-interface__ui--wrapper {
+  margin-bottom: 0;
+}
+
+.curation-interface__curate-interface--wrapper {
+  margin-top: 12px;
+}
