@@ -1,7 +1,7 @@
 import { ReactNode, useState, useCallback } from 'react'
 import { createContext, useContext } from 'react'
 import { useCurationFunctions } from '@public-assembly/curation-interactions'
-import { addIPFSGateway } from '@public-assembly/zora-drops-utils'
+import { addIPFSGateway, dropsFetcher } from '@public-assembly/zora-drops-utils'
 import { useMemo } from 'react'
 import { AddressZero } from '@ethersproject/constants'
 import { shuffle } from 'lodash'
@@ -54,15 +54,6 @@ export function usePlaylistProvider() {
   return useContext(PlaylistContext)
 }
 
-function removeDuplicates(array: any, key: any) {
-  return [
-    ...new Map(
-      /* @ts-ignore */
-      array.map((x) => [key(x), x])
-    ).values(),
-  ]
-}
-
 export function PlaylistProvider({
   children,
   curationContractAddress,
@@ -81,6 +72,15 @@ export function PlaylistProvider({
   })
 
   const playList = useMemo(() => {
+    function removeDuplicates(array: any, key: any) {
+      return [
+        ...new Map(
+          /* @ts-ignore */
+          array.map((x) => [key(x), x])
+        ).values(),
+      ]
+    }
+
     const curationTargetTypes = {
       '0': 'CURATION_TYPE_GENERIC',
       '1': 'CURATION_TYPE_NFT_CONTRACT',
@@ -95,41 +95,47 @@ export function PlaylistProvider({
       return curationTargetTypes[key]
     }
 
-    if (playlistData) {
-      const allData = playlistData.map((entry) => {
-        // console.log(entry)
-        try {
-          return {
-            curatedAddress: entry['curatedAddress']?.toLowerCase(),
-            curationTargetType: returnCurationType(
-              entry['curationTargetType'].toString()
-            ),
-            hasTokenId: entry['hasTokenId'],
-            tokenId: entry['tokenId']?.toString(),
-            curator: entry['curator'],
-            sortOrder: entry['sortOrder'],
-            chainId: entry['chainId']?.toString(),
+    function getCurationList() {
+      if (playlistData) {
+        const allData = playlistData.map((entry) => {
+          // console.log(entry)
+          try {
+            const curationEntry = {
+              curatedAddress: entry['curatedAddress']?.toLowerCase(),
+              curationTargetType: returnCurationType(
+                entry['curationTargetType'].toString()
+              ),
+              hasTokenId: entry['hasTokenId'],
+              tokenId: entry['tokenId']?.toString(),
+              curator: entry['curator'],
+              sortOrder: entry['sortOrder'],
+              chainId: entry['chainId']?.toString(),
+            }
+
+            return curationEntry
+          } catch (err) {
+            console.error(err)
           }
+        })
+        try {
+          const removeZeroAddress = allData.filter(
+            (item) =>
+              item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
+          )
+          const uniqeListings = removeDuplicates(
+            removeZeroAddress,
+            (item: any) => item.curatedAddress
+          )
+          return shuffle(uniqeListings) as PlayListReturn[]
         } catch (err) {
           console.error(err)
+          return []
         }
-      })
-      try {
-        const removeZeroAddress = allData.filter(
-          (item) => item?.curatedAddress !== AddressZero && item?.curator !== AddressZero
-        )
-        const uniqeListings = removeDuplicates(
-          removeZeroAddress,
-          (item: any) => item.curatedAddress
-        )
-        return shuffle(uniqeListings) as PlayListReturn[]
-      } catch (err) {
-        console.error(err)
+      } else {
         return []
       }
-    } else {
-      return []
     }
+    return getCurationList()
   }, [playlistData])
 
   const playListContracts = useMemo(() => {

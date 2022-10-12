@@ -911,10 +911,10 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
-"@public-assembly/audio-player-ui@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.1.0.tgz#15e1e0b863ec8612a3ec2b3acd73ad54dcec0d80"
-  integrity sha512-J9QtfqjhobBcUlV6yu2AGpfTNF1TeTkLzJUhBbr/pqqY/OcTr9Zavx1NRM4og/exjkBMzMSHnESmLzvv58vWdg==
+"@public-assembly/audio-player-ui@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@public-assembly/audio-player-ui/-/audio-player-ui-0.1.1.tgz#4219652e029da40820400966ae9e9146e6fb5bba"
+  integrity sha512-LmKpNN41k79+1pN11zdY7XYU6V8VuLV4Nyaz8svnHumdWflru7pj9FTBYcN0R6EVhUUW3fua1rINb3ZpThJH9Q==
 
 "@public-assembly/curation-interactions@0.0.17":
   version "0.0.17"
