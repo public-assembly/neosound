@@ -19,8 +19,7 @@ const About: NextPage = () => {
         </h1>
 
         <h1 className="text-[18px] font-light text-stone-300">
-          Combining the concepts of the microplatform, community-driven curation, and art
-          focused consumption experiences, this project is a direct synthesis of
+          Combining the concepts of the microplatform, community-driven curation, and extensive process documentation, this project is a direct synthesis of
           <a
             className="text-[#ff89de] hover:underline"
             href="https://www.unun.link/un001">
@@ -36,7 +35,7 @@ const About: NextPage = () => {
           <a className="text-[#ff89de] hover:underline" href="https://www.door.link/">
             Door
           </a>
-          . It is a template to help others create what’s missing.
+          . It is a template to help others <i>create what’s missing</i>.
         </h1>
       </div>
     </>
