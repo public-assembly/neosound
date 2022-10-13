@@ -9,6 +9,16 @@ export type PlaylistProps = {
   networkId?: '1' | '5'
 }
 
+export type PlayListReturn = {
+  curatedAddress?: string
+  curationTargetType?: CurationTargetTypes
+  hasTokenId?: boolean
+  tokenId?: string
+  curator?: string
+  sortOrder?: number
+  chainId?: number
+}
+
 export type PlaylistReturnTypes = {
   toggleLayout?: () => void
   setTrack?: (track?: any) => void

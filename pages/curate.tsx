@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import { CurationInterface } from '@public-assembly/curation-interactions'
 import { Connect } from '@/components/auth/Connect'
 import { Seo } from '@/components/Seo'
