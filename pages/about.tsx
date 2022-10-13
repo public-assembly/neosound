@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import { Seo } from '@/components/Seo'
 
 const About: NextPage = () => {
@@ -19,7 +18,8 @@ const About: NextPage = () => {
         </h1>
 
         <h1 className="text-[18px] font-light text-stone-300">
-          Combining the concepts of the microplatform, community-driven curation, and extensive process documentation, this project is a direct synthesis of
+          Combining the concepts of the microplatform, community-driven curation, and
+          extensive process documentation, this project is a direct synthesis of
           <a
             className="text-[#ff89de] hover:underline"
             href="https://www.unun.link/un001">

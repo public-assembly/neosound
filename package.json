@@ -15,7 +15,7 @@
     "@fontsource/ia-writer-mono": "^4.5.3",
     "@fontsource/inter": "^4.5.12",
     "@public-assembly/audio-player-ui": "^0.1.1",
-    "@public-assembly/curation-interactions": "0.0.17",
+    "@public-assembly/curation-interactions": "^0.0.18-pre",
     "@public-assembly/erc721-drops-minter": "^0.0.8",
     "@public-assembly/zora-drops-utils": "^0.1.1",
     "@rainbow-me/rainbowkit": "^0.5.0",
