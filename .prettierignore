@@ -6,3 +6,5 @@ yarn.lock
 .prettierignore
 public
 .env
+.env.local
+.env.example
