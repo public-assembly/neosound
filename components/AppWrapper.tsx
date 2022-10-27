@@ -8,6 +8,8 @@ import '@rainbow-me/rainbowkit/styles.css'
 import { ModalProvider } from '@/context/ModalProvider'
 import { CHAIN_ID, ALCHEMY_KEY } from '../utils'
 
+console.log("wahts the api key: ", ALCHEMY_KEY);
+
 const { chains, provider } = configureChains(
   [defaultChains.find((chain) => chain.id.toString() === CHAIN_ID)!],
   [

@@ -12,7 +12,7 @@ const About: NextPage = () => {
         <h1 className="my-4 text-3xl font-light text-stone-300">Neosound</h1>
         <h1 className="text-[18px] font-light text-stone-300">
           This site offers a new way to listen, share, and publish music on the internet.
-          Built upon modular + open-source building blocks, Neosound will serve as a
+          Built upon modular + open-source building blocks, Neosound serves as a
           living reference for others to draw inspiration, learn, and remix for their own
           communities and audiences{' '}
         </h1>
